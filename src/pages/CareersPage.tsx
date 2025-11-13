@@ -155,7 +155,13 @@ export default function CareersPage({ onNavigate }: CareersPageProps) {
     setIsSubmitting(true);
 
     try {
-      setIsSubmitted(true);
+      // 1) SEND DATA TO N8N WEBHOOK
+    await fetch("https://app.10xspeed.in/webhook/careers-form", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+    setIsSubmitted(true);
       setFormData({
         fullName: '',
         phone: '',
