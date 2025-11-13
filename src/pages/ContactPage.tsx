@@ -63,15 +63,28 @@ export default function ContactPage({ onNavigate }: ContactPageProps) {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // ⭐⭐⭐⭐⭐ UPDATED WEBHOOK SUBMISSION CODE ⭐⭐⭐⭐⭐
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (validateForm()) {
-      console.log('Form submitted:', formData);
+    if (!validateForm()) return;
+
+    try {
+      await fetch("https://app.10xspeed.in/webhook/free-quote-form", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+
       setIsSubmitted(true);
       setFormData({ name: '', email: '', phone: '', service: '', message: '' });
       setTimeout(() => setIsSubmitted(false), 5000);
+    } catch (error) {
+      console.error("Webhook submission failed:", error);
     }
   };
+  // ⭐⭐⭐⭐⭐ END UPDATED CODE ⭐⭐⭐⭐⭐
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -96,10 +109,22 @@ export default function ContactPage({ onNavigate }: ContactPageProps) {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-white" style={{ textShadow: '3px 3px 12px rgba(0,0,0,0.95), 0 0 30px rgba(0,0,0,0.9), 0 0 40px rgba(0,0,0,0.8)' }}>
+            <h1
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-white"
+              style={{
+                textShadow:
+                  '3px 3px 12px rgba(0,0,0,0.95), 0 0 30px rgba(0,0,0,0.9), 0 0 40px rgba(0,0,0,0.8)'
+              }}
+            >
               Contact Us
             </h1>
-            <p className="text-base sm:text-lg md:text-xl text-white" style={{ textShadow: '2px 2px 10px rgba(0,0,0,0.95), 0 0 25px rgba(0,0,0,0.9), 0 0 35px rgba(0,0,0,0.7)' }}>
+            <p
+              className="text-base sm:text-lg md:text-xl text-white"
+              style={{
+                textShadow:
+                  '2px 2px 10px rgba(0,0,0,0.95), 0 0 25px rgba(0,0,0,0.9), 0 0 35px rgba(0,0,0,0.7)'
+              }}
+            >
               Get in touch for a free consultation and quote for your property
             </p>
           </div>
@@ -110,6 +135,7 @@ export default function ContactPage({ onNavigate }: ContactPageProps) {
       <section className="py-10 sm:py-12 md:py-20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-10 md:gap-12">
+
             {/* Contact Information */}
             <div className="lg:col-span-1">
               <div className="bg-brand-primary text-white p-6 sm:p-8 rounded-2xl shadow-xl lg:sticky lg:top-40">
@@ -172,7 +198,9 @@ export default function ContactPage({ onNavigate }: ContactPageProps) {
             {/* Contact Form */}
             <div className="lg:col-span-2">
               <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-gray-100">
-                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">Request a Free Quote</h2>
+                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">
+                  Request a Free Quote
+                </h2>
                 <p className="text-sm sm:text-base text-gray-600 mb-6 sm:mb-8">
                   Fill out the form below and we'll get back to you within 24 hours.
                 </p>
@@ -185,6 +213,8 @@ export default function ContactPage({ onNavigate }: ContactPageProps) {
                 )}
 
                 <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
+                  
+                  {/* NAME */}
                   <div>
                     <label htmlFor="name" className="block text-gray-700 font-semibold mb-2 text-sm sm:text-base">
                       Full Name *
@@ -203,6 +233,7 @@ export default function ContactPage({ onNavigate }: ContactPageProps) {
                     {errors.name && <p className="text-red-500 text-xs sm:text-sm mt-1">{errors.name}</p>}
                   </div>
 
+                  {/* EMAIL + PHONE */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">
@@ -241,6 +272,7 @@ export default function ContactPage({ onNavigate }: ContactPageProps) {
                     </div>
                   </div>
 
+                  {/* SERVICE */}
                   <div>
                     <label htmlFor="service" className="block text-gray-700 font-semibold mb-2">
                       Service Needed *
@@ -264,6 +296,7 @@ export default function ContactPage({ onNavigate }: ContactPageProps) {
                     {errors.service && <p className="text-red-500 text-sm mt-1">{errors.service}</p>}
                   </div>
 
+                  {/* MESSAGE */}
                   <div>
                     <label htmlFor="message" className="block text-gray-700 font-semibold mb-2">
                       Project Details *
@@ -282,6 +315,7 @@ export default function ContactPage({ onNavigate }: ContactPageProps) {
                     {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
                   </div>
 
+                  {/* BUTTON */}
                   <button
                     type="submit"
                     className="w-full bg-brand-primary text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg hover:bg-opacity-90 transition-all font-semibold text-base sm:text-lg shadow-lg flex items-center justify-center gap-2"
@@ -292,6 +326,7 @@ export default function ContactPage({ onNavigate }: ContactPageProps) {
                 </form>
               </div>
             </div>
+
           </div>
         </div>
       </section>
