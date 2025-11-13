@@ -129,11 +129,7 @@ export default function CareersPage({ onNavigate }: CareersPageProps) {
       newErrors.experienceDescription = 'Please describe your experience';
     }
 
-    if (!formData.resumeFile) {
-      newErrors.resumeFile = 'Resume upload is required';
-    }
-
-    if (!formData.availableStartDate.trim()) {
+        if (!formData.availableStartDate.trim()) {
       newErrors.availableStartDate = 'Please indicate when you can start';
     }
 
@@ -568,7 +564,7 @@ export default function CareersPage({ onNavigate }: CareersPageProps) {
 
                 <div>
                   <label htmlFor="resumeFile" className="block text-gray-700 font-semibold mb-2">
-                    Resume Upload *
+                    Resume Upload (Optional)
                   </label>
                   <input
                     type="file"
