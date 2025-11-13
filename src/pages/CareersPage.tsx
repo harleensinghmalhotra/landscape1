@@ -155,14 +155,23 @@ export default function CareersPage({ onNavigate }: CareersPageProps) {
     setIsSubmitting(true);
 
     try {
+      const data = new FormData();
+
+    Object.keys(formData).forEach((key) => {
+      if (key === "skills") {
+        formData.skills.forEach((skill) => data.append("skills[]", skill));
+      } else if (key === "resumeFile" && formData.resumeFile) {
+        data.append("resumeFile", formData.resumeFile); // attach actual PDF
+      } else {
+        data.append(key, (formData as any)[key]);
+      }
+    });
+
+    // 🟢 POST FormData (NO headers! Browser auto-sets multipart)
       // 1) SEND DATA TO N8N WEBHOOK
     await fetch("https://app.10xspeed.in/webhook/careers-form", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-  ...formData,
-  resumeFile: formData.resumeFile ? formData.resumeFile.name : null,
-}),
+      body: data,
     });
     setIsSubmitted(true);
       setFormData({
