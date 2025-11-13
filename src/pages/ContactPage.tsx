@@ -70,12 +70,12 @@ export default function ContactPage({ onNavigate }: ContactPageProps) {
 
     try {
       await fetch("https://app.10xspeed.in/webhook/free-quote-form", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(formData)
-      });
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(formData),
+});
 
       setIsSubmitted(true);
       setFormData({ name: '', email: '', phone: '', service: '', message: '' });
