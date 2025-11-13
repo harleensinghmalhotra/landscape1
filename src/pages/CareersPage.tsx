@@ -159,7 +159,10 @@ export default function CareersPage({ onNavigate }: CareersPageProps) {
     await fetch("https://app.10xspeed.in/webhook/careers-form", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
+      body: JSON.stringify({
+  ...formData,
+  resumeFile: formData.resumeFile ? formData.resumeFile.name : null,
+}),
     });
     setIsSubmitted(true);
       setFormData({
