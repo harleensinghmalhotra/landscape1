@@ -34,13 +34,13 @@ export default function GalleryPage({ onNavigate }: GalleryPageProps) {
       description: 'Eroded lakefront slope restored with leveled bed of cedar mulch; expanding walkway to enjoy Lake Michigan views.'
     },
     {
-      before: '/After 5.jpg',
+      before: '/After 5.png',
       after: '/Before 5.jpg',
       title: 'Seasonal Landscape Maintenance',
       description: 'Fall cleanup and winter preparation including debris removal, pruning of hydrangeas and ornamental grasses, fresh mulch application, and protective coverings.'
     },
     {
-      before: '/After 6.jpg',
+      before: '/After 6.png',
       after: '/Before 6.jpg',
       title: 'Japanese Garden Redesign',
       description: 'Narrow side yard transformed into Japanese-inspired retreat with river stone water feature, Buddha statue, and ornamental plantings.'
