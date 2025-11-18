@@ -77,26 +77,46 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative h-[300px] sm:h-[350px] md:h-[400px] flex items-center bg-black">
-        <div
-          className="absolute inset-0 bg-cover bg-[center_1%] bg-no-repeat "
-          style={{
-            backgroundImage: 'url(/marcus2.png)'
-          }}
-        >
-        </div>
+<section className="relative h-[300px] sm:h-[350px] md:h-[400px] flex items-center">
+  {/* Background Image */}
+  <div
+    className="absolute inset-0 bg-cover bg-[center_1%] bg-no-repeat"
+    style={{
+      backgroundImage: 'url(/marcusbhai.png)'
+    }}
+  ></div>
 
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-white" style={{ textShadow: '3px 3px 12px rgba(0,0,0,0.95), 0 0 30px rgba(0,0,0,0.9), 0 0 40px rgba(0,0,0,0.8)' }}>
-              About The Founder
-            </h1>
-            <p className="text-base sm:text-lg md:text-xl text-white" style={{ textShadow: '2px 2px 10px rgba(0,0,0,0.95), 0 0 25px rgba(0,0,0,0.9), 0 0 35px rgba(0,0,0,0.7)' }}>
-              Chicago's trusted landscaping partner, delivering professional design, installation, and maintenance services for residential and commercial properties.
-            </p>
-          </div>
-        </div>
-      </section>
+  {/* Optional subtle dark overlay (helps readability) */}
+  <div className="absolute inset-0 bg-black/20"></div>
+
+  {/* Text */}
+  <div className="container mx-auto px-4 relative z-10 pt-10 sm:pt-14 md:pt-20">
+    <div className="max-w-3xl">
+      <h1
+        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-1 sm:mb-2 text-white"
+        style={{
+          textShadow:
+            "3px 3px 12px rgba(0,0,0,0.95), 0 0 30px rgba(0,0,0,0.9), 0 0 40px rgba(0,0,0,0.8)"
+        }}
+      >
+        About The Founder
+      </h1>
+
+      <p
+        className="text-base sm:text-lg md:text-xl text-white"
+        style={{
+          textShadow:
+            "2px 2px 10px rgba(0,0,0,0.95), 0 0 25px rgba(0,0,0,0.9), 0 0 35px rgba(0,0,0,0.7)"
+        }}
+      >
+        Chicago's trusted landscaping partner, delivering professional design,
+        installation, and maintenance services for residential and commercial
+        properties.
+      </p>
+    </div>
+  </div>
+</section>
+
 
       {/* Company History */}
 <section className="py-12 sm:py-16 md:py-20">
