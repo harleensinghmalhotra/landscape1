@@ -78,7 +78,7 @@ export default function Footer({ onNavigate }: FooterProps) {
                   onClick={() => handleNavClick('about')}
                   className="hover:text-brand-primary transition-colors"
                 >
-                  About
+                  About The Founder
                 </button>
               </li>
               <li>

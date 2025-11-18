@@ -79,18 +79,17 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
       {/* Hero Section */}
       <section className="relative h-[300px] sm:h-[350px] md:h-[400px] flex items-center bg-black">
         <div
-          className="absolute inset-0 bg-contain bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-[center_1%] bg-no-repeat "
           style={{
-            backgroundImage: 'url(/1.png)'
+            backgroundImage: 'url(/marcus2.png)'
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 to-black/70"></div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-white" style={{ textShadow: '3px 3px 12px rgba(0,0,0,0.95), 0 0 30px rgba(0,0,0,0.9), 0 0 40px rgba(0,0,0,0.8)' }}>
-              About Us
+              About The Founder
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-white" style={{ textShadow: '2px 2px 10px rgba(0,0,0,0.95), 0 0 25px rgba(0,0,0,0.9), 0 0 35px rgba(0,0,0,0.7)' }}>
               Chicago's trusted landscaping partner, delivering professional design, installation, and maintenance services for residential and commercial properties.
@@ -105,26 +104,26 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
       <div>
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
-          About Us
+          About The Founder
         </h2>
         <div className="space-y-3 sm:space-y-4 text-gray-700 text-base sm:text-lg">
           <p>
-            I'm a skilled craftsman with over a decade of experience in landscaping, hardscaping, and outdoor design — bringing expertise, precision, and creativity to every project I take on.
+            Marcus Dailey is a skilled craftsman with over a decade of experience in landscaping, hardscaping, construction, and outdoor design — bringing expertise, precision, and creativity to every project he takes on.
           </p>
           <p>
-            My philosophy is simple: I treat every property as if it were my own. Whether it's installing custom pavers, renovating landscape beds, or maintaining commercial properties, I take pride in creating results that stand the test of time.
+            His philosophy is simple: treat every property as if it were his own. Whether it's installing custom pavers, renovating landscape beds, or maintaining commercial properties, Marcus and his team take pride in creating results that stand the test of time.
           </p>
           <p>
-            What truly sets me apart is my versatility and attention to detail. Instead of hiring multiple contractors, you get one dedicated professional who can manage everything — from seasonal maintenance to complete landscape transformations.
+            What truly sets him apart is his versatility and attention to detail. Instead of hiring multiple contractors, clients get one dedicated professional who can manage everything — from seasonal maintenance to complete landscape transformations.
           </p>
           <p>
-            I use high-quality materials, honor my commitments, and never consider a job complete until my clients are fully satisfied. My goal isn't just to finish your project — it's to exceed expectations and earn lasting trust.
+            Marcus uses high-quality materials, honors his commitments, and never considers a job complete until his clients are fully satisfied. His goal isn't just to finish your project — it's to exceed expectations and earn lasting trust.
           </p>
         </div>
       </div>
       <div className="order-first lg:order-last">
         <img
-          src="/3.png"
+          src="/About Us Photo.jpg"
           alt="MD Landscape & Design Logo"
           className="rounded-2xl shadow-2xl w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover"
         />

@@ -35,7 +35,7 @@ export default function Header({ currentPage, onNavigate }: HeaderProps) {
     { name: 'Home', id: 'home' },
     { name: 'Services', id: 'services' },
     { name: 'Gallery', id: 'gallery' },
-    { name: 'About', id: 'about' },
+    { name: 'About The Founder', id: 'about' },
     { name: 'Join Our Team', id: 'careers' },
     { name: 'Contact Us', id: 'contact' },
   ];
