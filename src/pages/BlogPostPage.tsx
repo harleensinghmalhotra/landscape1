@@ -14,8 +14,8 @@ interface BlogPost {
   date: string;
   intro: string;
   content: string;
-  headerImage?: string;      // ← main banner image
-  inlineImages?: string[];   // ← multiple body images
+  headerImage?: string;
+  inlineImages?: string[];
 }
 
 export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
@@ -25,15 +25,34 @@ export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
   const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([]);
 
   useEffect(() => {
-    fetch('/blogs/blog-posts.json')   // ← FIXED HERE
+    fetch('/blogs/blog-posts.json')   // ⭐ FIXED PATH
       .then((r) => r.json())
       .then((data: BlogPost[]) => {
-        setAllPosts(data);
-        const foundPost = data.find((p) => p.slug === slug);
+        
+        // ⭐ AUTO-FIX ALL IMAGE PATHS (header + inline)
+        const processed = data.map((p) => ({
+          ...p,
+          headerImage: p.headerImage
+            ? p.headerImage.startsWith('/blog-images/')
+              ? p.headerImage
+              : `/blog-images/${p.headerImage}`
+            : undefined,
+          inlineImages: p.inlineImages
+            ? p.inlineImages.map((img) =>
+                img.startsWith('/blog-images/')
+                  ? img
+                  : `/blog-images/${img}`
+              )
+            : []
+        }));
+
+        setAllPosts(processed);
+
+        const foundPost = processed.find((p) => p.slug === slug);
         setPost(foundPost || null);
 
         if (foundPost) {
-          const related = data.filter((p) => p.slug !== slug).slice(0, 3);
+          const related = processed.filter((p) => p.slug !== slug).slice(0, 3);
           setRelatedPosts(related);
         }
 
@@ -100,7 +119,7 @@ export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
         <link rel="canonical" href={`https://mdaileylandscaping.com/blog/${post.slug}`} />
       </Helmet>
 
-      {/* MAIN BANNER IMAGE */}
+      {/* ⭐ MAIN HEADER IMAGE */}
       {post.headerImage && (
         <div className="w-full h-[260px] sm:h-[320px] md:h-[400px] overflow-hidden">
           <img
@@ -136,7 +155,7 @@ export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
             </p>
           </header>
 
-          {/* INLINE IMAGES */}
+          {/* ⭐ INLINE IMAGES */}
           {post.inlineImages && post.inlineImages.length > 0 && (
             <div className="space-y-6 my-8">
               {post.inlineImages.map((src, i) => (
@@ -150,14 +169,14 @@ export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
             </div>
           )}
 
-          {/* HTML BODY CONTENT */}
+          {/* HTML BODY */}
           <div
             className="prose prose-lg sm:prose-xl max-w-none"
             style={{ lineHeight: '1.8' }}
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
 
-          {/* PREV / NEXT BUTTONS */}
+          {/* ⭐ PREV/NEXT */}
           <div className="mt-12 sm:mt-16 pt-8 sm:pt-10 border-t border-gray-200">
             <div className="flex flex-col sm:flex-row justify-between gap-4">
               {prev ? (
@@ -194,7 +213,7 @@ export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
         </div>
       </article>
 
-      {/* RELATED ARTICLES */}
+      {/* RELATED POSTS */}
       {relatedPosts.length > 0 && (
         <section className="py-12 sm:py-16 bg-gray-50">
           <div className="container mx-auto px-4 max-w-6xl">

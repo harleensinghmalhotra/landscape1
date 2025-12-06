@@ -14,7 +14,7 @@ interface BlogPost {
   date: string;
   intro: string;
   content: string;
-  headerImage?: string; 
+  headerImage?: string;
 }
 
 export default function BlogPage({ onNavigate, page = 1 }: BlogPageProps) {
@@ -23,10 +23,20 @@ export default function BlogPage({ onNavigate, page = 1 }: BlogPageProps) {
   const POSTS_PER_PAGE = 10;
 
   useEffect(() => {
-    fetch('/blogs/blog-posts.json')   // ← FIXED HERE
+    fetch('/blogs/blog-posts.json')     // ⭐ FIXED PATH
       .then((r) => r.json())
       .then((data) => {
-        setPosts(data);
+        const processed = data.map((post: BlogPost) => ({
+          ...post,
+          // ⭐ FIX: Auto prepend /blog-images/ if missing to avoid N8N mistakes
+          headerImage: post.headerImage
+            ? post.headerImage.startsWith('/blog-images/')
+              ? post.headerImage
+              : `/blog-images/${post.headerImage}`
+            : undefined
+        }));
+
+        setPosts(processed);
         setLoading(false);
       })
       .catch((err) => {
@@ -179,7 +189,7 @@ export default function BlogPage({ onNavigate, page = 1 }: BlogPageProps) {
                       className="inline-flex items-center gap-2 bg-brand-primary text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg hover:bg-opacity-90 transition-all font-semibold text-sm sm:text-base shadow-md hover:shadow-lg"
                     >
                       Read More
-                      <ArrowRight size={16} className="sm:w-[18px] sm:h-[18px]" />
+                      <ArrowRight size={16} />
                     </button>
                   </div>
                 </article>
