@@ -15,6 +15,7 @@ interface BlogPost {
   intro: string;
   content: string;
   headerImage?: string;
+  image?: string; // fallback support
   inlineImages?: string[];
 }
 
@@ -25,18 +26,23 @@ export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
   const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([]);
 
   useEffect(() => {
-    fetch('/blogs/blog-posts.json')   // ⭐ FIXED PATH
+    fetch('/blogs/blog-posts.json')
       .then((r) => r.json())
       .then((data: BlogPost[]) => {
         
-        // ⭐ AUTO-FIX ALL IMAGE PATHS (header + inline)
+        // ⭐ FIX ALL IMAGE PATHS for safety
         const processed = data.map((p) => ({
           ...p,
           headerImage: p.headerImage
             ? p.headerImage.startsWith('/blog-images/')
               ? p.headerImage
               : `/blog-images/${p.headerImage}`
+            : p.image
+            ? p.image.startsWith('/blog-images/')
+              ? p.image
+              : `/blog-images/${p.image}`
             : undefined,
+
           inlineImages: p.inlineImages
             ? p.inlineImages.map((img) =>
                 img.startsWith('/blog-images/')
@@ -176,7 +182,7 @@ export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
 
-          {/* ⭐ PREV/NEXT */}
+          {/* ⭐ PREV / NEXT */}
           <div className="mt-12 sm:mt-16 pt-8 sm:pt-10 border-t border-gray-200">
             <div className="flex flex-col sm:flex-row justify-between gap-4">
               {prev ? (
@@ -213,7 +219,7 @@ export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
         </div>
       </article>
 
-      {/* RELATED POSTS */}
+      {/* RELATED ARTICLES */}
       {relatedPosts.length > 0 && (
         <section className="py-12 sm:py-16 bg-gray-50">
           <div className="container mx-auto px-4 max-w-6xl">
@@ -240,7 +246,9 @@ export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
                   <div className="p-5 sm:p-6">
                     <div className="flex items-center gap-2 text-gray-600 text-xs sm:text-sm mb-3">
                       <Calendar size={14} />
-                      <time dateTime={relatedPost.date}>{formatDate(relatedPost.date)}</time>
+                      <time dateTime={relatedPost.date}>
+                        {formatDate(relatedPost.date)}
+                      </time>
                     </div>
 
                     <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 hover:text-brand-primary transition-colors line-clamp-2">

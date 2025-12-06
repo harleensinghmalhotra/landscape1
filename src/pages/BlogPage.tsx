@@ -15,6 +15,7 @@ interface BlogPost {
   intro: string;
   content: string;
   headerImage?: string;
+  image?: string;
 }
 
 export default function BlogPage({ onNavigate, page = 1 }: BlogPageProps) {
@@ -23,16 +24,22 @@ export default function BlogPage({ onNavigate, page = 1 }: BlogPageProps) {
   const POSTS_PER_PAGE = 10;
 
   useEffect(() => {
-    fetch('/blogs/blog-posts.json')     // ⭐ FIXED PATH
+    fetch('/blogs/blog-posts.json')
       .then((r) => r.json())
-      .then((data) => {
+      .then((data: BlogPost[]) => {
+        
+        // ⭐ AUTO-FIX IMAGE PATHS
         const processed = data.map((post: BlogPost) => ({
           ...post,
-          // ⭐ FIX: Auto prepend /blog-images/ if missing to avoid N8N mistakes
+
           headerImage: post.headerImage
             ? post.headerImage.startsWith('/blog-images/')
               ? post.headerImage
               : `/blog-images/${post.headerImage}`
+            : post.image
+            ? post.image.startsWith('/blog-images/')
+              ? post.image
+              : `/blog-images/${post.image}`
             : undefined
         }));
 
@@ -152,8 +159,6 @@ export default function BlogPage({ onNavigate, page = 1 }: BlogPageProps) {
                   key={post.id}
                   className="bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden"
                 >
-
-                  {/* FEATURED IMAGE */}
                   {post.headerImage && (
                     <div className="w-full h-56 sm:h-64 md:h-72 overflow-hidden">
                       <img
