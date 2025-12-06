@@ -25,7 +25,7 @@ export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
   const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([]);
 
   useEffect(() => {
-    fetch('/blog-posts.json')
+    fetch('/blogs/blog-posts.json')   // ← FIXED HERE
       .then((r) => r.json())
       .then((data: BlogPost[]) => {
         setAllPosts(data);
@@ -78,7 +78,9 @@ export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-3xl font-bold text-gray-900 mb-4">Post Not Found</h1>
-          <p className="text-lg text-gray-600 mb-6">The blog post you're looking for doesn't exist.</p>
+          <p className="text-lg text-gray-600 mb-6">
+            The blog post you're looking for doesn't exist.
+          </p>
           <button
             onClick={() => onNavigate('blog')}
             className="bg-brand-primary text-white px-6 py-3 rounded-lg hover:bg-opacity-90 transition-all font-semibold"
@@ -134,7 +136,7 @@ export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
             </p>
           </header>
 
-          {/* INLINE IMAGES BELOW INTRO */}
+          {/* INLINE IMAGES */}
           {post.inlineImages && post.inlineImages.length > 0 && (
             <div className="space-y-6 my-8">
               {post.inlineImages.map((src, i) => (

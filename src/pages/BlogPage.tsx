@@ -14,7 +14,7 @@ interface BlogPost {
   date: string;
   intro: string;
   content: string;
-  headerImage?: string; // ⭐ Same naming as BlogPostPage
+  headerImage?: string; 
 }
 
 export default function BlogPage({ onNavigate, page = 1 }: BlogPageProps) {
@@ -23,7 +23,7 @@ export default function BlogPage({ onNavigate, page = 1 }: BlogPageProps) {
   const POSTS_PER_PAGE = 10;
 
   useEffect(() => {
-    fetch('/blog-posts.json')
+    fetch('/blogs/blog-posts.json')   // ← FIXED HERE
       .then((r) => r.json())
       .then((data) => {
         setPosts(data);
