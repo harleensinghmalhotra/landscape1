@@ -15,7 +15,7 @@ interface BlogPost {
   intro: string;
   content: string;
   headerImage?: string;
-  image?: string; // fallback support
+  image?: string;
   inlineImages?: string[];
 }
 
@@ -29,8 +29,7 @@ export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
     fetch('/blogs/blog-posts.json')
       .then((r) => r.json())
       .then((data: BlogPost[]) => {
-        
-        // ⭐ FIX ALL IMAGE PATHS for safety
+        // ⭐ FIX ALL IMAGE PATHS
         const processed = data.map((p) => ({
           ...p,
           headerImage: p.headerImage
@@ -49,7 +48,7 @@ export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
                   ? img
                   : `/blog-images/${img}`
               )
-            : []
+            : [],
         }));
 
         setAllPosts(processed);
@@ -64,10 +63,7 @@ export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
 
         setLoading(false);
       })
-      .catch((err) => {
-        console.error('Failed to load blog post:', err);
-        setLoading(false);
-      });
+      .catch(() => setLoading(false));
   }, [slug]);
 
   const formatDate = (dateString: string) => {
@@ -84,7 +80,10 @@ export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
     const currentIndex = allPosts.findIndex((p) => p.id === post.id);
     return {
       prev: currentIndex > 0 ? allPosts[currentIndex - 1] : null,
-      next: currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null,
+      next:
+        currentIndex < allPosts.length - 1
+          ? allPosts[currentIndex + 1]
+          : null,
     };
   };
 
@@ -102,7 +101,9 @@ export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">Post Not Found</h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-4">
+            Post Not Found
+          </h1>
           <p className="text-lg text-gray-600 mb-6">
             The blog post you're looking for doesn't exist.
           </p>
@@ -122,19 +123,19 @@ export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
       <Helmet>
         <title>{post.title} | M. Dailey Landscaping & Design</title>
         <meta name="description" content={post.intro} />
-        <link rel="canonical" href={`https://mdaileylandscaping.com/blog/${post.slug}`} />
+        <link
+          rel="canonical"
+          href={`https://mdaileylandscaping.com/blog/${post.slug}`}
+        />
       </Helmet>
 
-      {/* ⭐ MAIN HEADER IMAGE */}
-      {post.headerImage && (
-        <div className="w-full h-[260px] sm:h-[320px] md:h-[400px] overflow-hidden">
-          <img
-            src={post.headerImage}
-            alt={post.title}
-            className="w-full h-full object-cover"
-          />
-        </div>
-      )}
+      {/* ⭐ FIXED BANNER IMAGE FOR ALL BLOGS */}
+      <section
+        className="w-full h-[260px] sm:h-[320px] md:h-[400px] bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/banner2.jpg')",
+        }}
+      />
 
       <article className="py-12 sm:py-16 md:py-20">
         <div className="container mx-auto px-4 max-w-4xl">
@@ -161,6 +162,17 @@ export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
             </p>
           </header>
 
+          {/* ⭐ BLOG'S MAIN IMAGE UNDER THE TITLE */}
+          {post.headerImage && (
+            <div className="my-10">
+              <img
+                src={post.headerImage}
+                alt={post.title}
+                className="w-full rounded-xl shadow-lg object-cover"
+              />
+            </div>
+          )}
+
           {/* ⭐ INLINE IMAGES */}
           {post.inlineImages && post.inlineImages.length > 0 && (
             <div className="space-y-6 my-8">
@@ -175,51 +187,56 @@ export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
             </div>
           )}
 
-          {/* HTML BODY */}
+          {/* BODY CONTENT */}
           <div
             className="prose prose-lg sm:prose-xl max-w-none"
-            style={{ lineHeight: '1.8' }}
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
 
-          {/* ⭐ PREV / NEXT */}
+          {/* PREV / NEXT */}
           <div className="mt-12 sm:mt-16 pt-8 sm:pt-10 border-t border-gray-200">
             <div className="flex flex-col sm:flex-row justify-between gap-4">
               {prev ? (
                 <button
                   onClick={() => onNavigate('blog-post', prev.slug)}
-                  className="flex items-center gap-2 text-brand-primary hover:text-opacity-80 transition-colors group flex-1"
+                  className="flex items-center gap-2 text-brand-primary group flex-1"
                 >
-                  <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
+                  <ArrowLeft
+                    size={20}
+                    className="group-hover:-translate-x-1 transition-transform"
+                  />
                   <div className="text-left">
                     <div className="text-xs text-gray-500 mb-1">Previous Post</div>
                     <div className="font-semibold">{prev.title}</div>
                   </div>
                 </button>
               ) : (
-                <div className="flex-1"></div>
+                <div className="flex-1" />
               )}
 
               {next ? (
                 <button
                   onClick={() => onNavigate('blog-post', next.slug)}
-                  className="flex items-center gap-2 text-brand-primary hover:text-opacity-80 transition-colors group flex-1 justify-end"
+                  className="flex items-center gap-2 text-brand-primary group flex-1 justify-end"
                 >
                   <div className="text-right">
                     <div className="text-xs text-gray-500 mb-1">Next Post</div>
                     <div className="font-semibold">{next.title}</div>
                   </div>
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight
+                    size={20}
+                    className="group-hover:translate-x-1 transition-transform"
+                  />
                 </button>
               ) : (
-                <div className="flex-1"></div>
+                <div className="flex-1" />
               )}
             </div>
           </div>
         </div>
       </article>
 
-      {/* RELATED ARTICLES */}
+      {/* RELATED */}
       {relatedPosts.length > 0 && (
         <section className="py-12 sm:py-16 bg-gray-50">
           <div className="container mx-auto px-4 max-w-6xl">
@@ -251,7 +268,7 @@ export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
                       </time>
                     </div>
 
-                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 hover:text-brand-primary transition-colors line-clamp-2">
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 line-clamp-2">
                       <button
                         onClick={() => onNavigate('blog-post', relatedPost.slug)}
                         className="text-left w-full"
@@ -266,7 +283,7 @@ export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
 
                     <button
                       onClick={() => onNavigate('blog-post', relatedPost.slug)}
-                      className="inline-flex items-center gap-2 text-brand-primary hover:gap-3 transition-all font-semibold text-sm sm:text-base"
+                      className="inline-flex items-center gap-2 text-brand-primary font-semibold"
                     >
                       Read More
                       <ArrowRight size={16} />
@@ -290,7 +307,7 @@ export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
           </p>
           <button
             onClick={() => onNavigate('contact')}
-            className="bg-brand-primary text-white px-8 sm:px-10 py-4 sm:py-5 rounded-lg hover:bg-opacity-90 transition-all font-semibold text-base sm:text-lg shadow-xl"
+            className="bg-brand-primary text-white px-8 sm:px-10 py-4 sm:py-5 rounded-lg font-semibold shadow-xl"
           >
             Get Free Quote
           </button>
