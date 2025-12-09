@@ -22,7 +22,8 @@ export default function BlogPage({ onNavigate, page = 1 }: BlogPageProps) {
 
   useEffect(() => {
     fetch(
-      'https://raw.githubusercontent.com/harleensinghmalhotra/landscape1/main/public/blogs/blogs.json'
+      'https://raw.githubusercontent.com/harleensinghmalhotra/landscape1/main/public/blogs/blogs.json',
+      { cache: 'no-store' } // ✅ CRITICAL FIX: disable caching
     )
       .then((r) => r.json())
       .then((data: BlogPost[]) => {
@@ -35,7 +36,7 @@ export default function BlogPage({ onNavigate, page = 1 }: BlogPageProps) {
       });
   }, []);
 
-  /* ✅ CRITICAL FIX: SORT NEWEST → OLDEST */
+  /* ✅ CRITICAL FIX: SORT NEWEST → OLDEST BEFORE PAGINATION */
   const sortedPosts = [...posts].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
@@ -203,14 +204,14 @@ export default function BlogPage({ onNavigate, page = 1 }: BlogPageProps) {
 
           <div className="mt-12 sm:mt-16 text-center">
             <p className="text-base sm:text-lg text-gray-600 mb-4">
-              Showing {startIndex + 1}–
-              {Math.min(endIndex, sortedPosts.length)} of {sortedPosts.length} posts
+              Showing {startIndex + 1}–{Math.min(endIndex, sortedPosts.length)} of{' '}
+              {sortedPosts.length} posts
             </p>
           </div>
         </div>
       </section>
 
-      {/* CTA (UNCHANGED) */}
+      {/* CTA */}
       <section className="py-12 sm:py-16 bg-gray-900 text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">
