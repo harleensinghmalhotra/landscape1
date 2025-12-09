@@ -37,9 +37,15 @@ export default function BlogPage({ onNavigate, page = 1 }: BlogPageProps) {
   }, []);
 
   /* ✅ CRITICAL FIX: SORT NEWEST → OLDEST BEFORE PAGINATION */
-  const sortedPosts = [...posts].sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
+  const sortedPosts = [...posts].sort((a, b) => {
+  const dateDiff =
+    new Date(b.date).getTime() - new Date(a.date).getTime();
+
+  if (dateDiff !== 0) return dateDiff;
+
+  // 👇 tie-breaker when dates are same
+  return b.id - a.id;
+});
 
   const totalPages = Math.ceil(sortedPosts.length / POSTS_PER_PAGE);
   const currentPage = Math.min(Math.max(1, page), totalPages);
