@@ -132,20 +132,21 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
         </h2>
         <div className="space-y-3 sm:space-y-4 text-gray-700 text-base sm:text-lg">
           <p>
-            Marcus Dailey founded M. Dailey Landscaping with a single mission: to bring a higher level of reliability and craftsmanship to the <strong>Chicago landscaping market</strong>. With over a decade of experience in hardscaping, excavation, and garden design, Marcus brings a hands-on approach to every project, ensuring that the final result matches the vision.
+            Marcus Dailey founded <strong>M. Dailey Landscaping &amp; Design</strong> to serve discerning homeowners and commercial property managers who expect exceptional results without compromise. With over a decade of experience in <strong>hardscaping, landscape design, and property enhancement</strong>, Marcus delivers the craftsmanship and attention to detail that define Chicago’s most distinguished properties.
           </p>
           <p>
-            His philosophy is simple: treat every property as if it were his own. Whether installing a <strong>Unilock paver patio</strong>, correcting drainage issues, or managing commercial snow removal, Marcus understands the specific challenges of <strong>Illinois weather</strong> and builds solutions that last.
+            His approach is built on accountability. Every project receives direct oversight from consultation through completion. Whether renovating an established residential landscape, executing new construction installations, or managing commercial property maintenance, Marcus ensures that quality is never delegated.
           </p>
           <p>
-            What sets Marcus apart is his versatility. Instead of dealing with multiple subcontractors, clients get one dedicated professional who manages the entire process. From the first consultation to the final walkthrough, Marcus is personally involved to ensure your project exceeds expectations and earns your lasting trust.
+            What distinguishes M. Dailey Landscaping &amp; Design is seamless execution. Clients work directly with Marcus, eliminating the uncertainty of subcontractor coordination and ensuring each vision is realized exactly as intended. From <strong>North Shore residential estates</strong> to commercial properties requiring reliable, professional service, Marcus builds long-term partnerships with clients who value precision, dependability, and results that enhance property value.
           </p>
         </div>
       </div>
+
       <div className="order-first lg:order-last">
         <img
           src="/About Us Photo.jpg"
-          alt="Marcus M. Dailey installing paver edging on a Chicago residential project"
+          alt="Marcus M. Dailey on a Chicago landscaping project"
           className="rounded-2xl shadow-2xl w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover"
         />
       </div>
