@@ -1,0 +1,94 @@
+{
+  "_comment": "Maps duplicate blog slugs to their chosen canonical winner. The static-SEO generator will set <link rel='canonical'> on duplicates to point at the winner, and the sitemap + blog index will exclude duplicates so authority consolidates onto the winners. Edit freely — pick whichever winner you'd rather rank.",
+
+  "chicago-landscaping-101-creating-a-stunning-yard-that-thrives-in-the-windy-city": "built-to-last-the-ultimate-guide-to-landscaping-in-chicago",
+  "chicago-landscaping-7-essential-tips-for-a-thriving-yard-all-year-round": "built-to-last-the-ultimate-guide-to-landscaping-in-chicago",
+  "chicago-landscaping-7-expert-tips-for-a-stunning-yard-that-thrives-all-year": "built-to-last-the-ultimate-guide-to-landscaping-in-chicago",
+  "chicago-landscaping-a-four-season-guide-for-a-stunning-yard": "built-to-last-the-ultimate-guide-to-landscaping-in-chicago",
+  "chicago-landscaping-a-guide-to-creating-a-thriving-yard-in-the-windy-city": "built-to-last-the-ultimate-guide-to-landscaping-in-chicago",
+  "chicago-landscaping-a-homeowner-s-guide-to-a-stunning-four-season-yard": "built-to-last-the-ultimate-guide-to-landscaping-in-chicago",
+  "chicago-landscaping-a-homeowner-s-guide-to-a-thriving-windy-city-garden": "built-to-last-the-ultimate-guide-to-landscaping-in-chicago",
+  "chicago-landscaping-a-homeowner-s-guide-to-a-thriving-windy-city-yard": "built-to-last-the-ultimate-guide-to-landscaping-in-chicago",
+  "chicago-landscaping-how-to-create-a-stunning-yard-that-thrives-all-year": "built-to-last-the-ultimate-guide-to-landscaping-in-chicago",
+  "effortless-beauty-your-guide-to-year-round-landscaping-in-chicago": "built-to-last-the-ultimate-guide-to-landscaping-in-chicago",
+  "from-frozen-tundra-to-urban-oasis-a-chicago-homeowner-s-guide-to-landscaping": "built-to-last-the-ultimate-guide-to-landscaping-in-chicago",
+  "the-four-season-garden-year-round-landscaping-beauty-for-your-chicago-home": "built-to-last-the-ultimate-guide-to-landscaping-in-chicago",
+  "the-ultimate-chicago-landscaping-guide-thriving-gardens-in-the-windy-city": "built-to-last-the-ultimate-guide-to-landscaping-in-chicago",
+  "the-ultimate-guide-to-chicago-landscaping-creating-a-beautiful-yard-that-thrives": "built-to-last-the-ultimate-guide-to-landscaping-in-chicago",
+  "the-ultimate-guide-to-chicago-landscaping-designs-that-thrive-in-every-season": "built-to-last-the-ultimate-guide-to-landscaping-in-chicago",
+  "the-ultimate-guide-to-chicago-landscaping-thriving-gardens-in-the-windy-city": "built-to-last-the-ultimate-guide-to-landscaping-in-chicago",
+  "the-ultimate-guide-to-landscaping-in-chicago-create-a-thriving-urban-oasis": "built-to-last-the-ultimate-guide-to-landscaping-in-chicago",
+  "the-ultimate-guide-to-year-round-landscaping-in-chicago-thrive-in-all-four-seasons": "built-to-last-the-ultimate-guide-to-landscaping-in-chicago",
+  "thrive-in-the-windy-city-a-4-season-guide-to-low-maintenance-chicago-landscaping": "built-to-last-the-ultimate-guide-to-landscaping-in-chicago",
+  "thriving-in-the-windy-city-a-chicago-homeowner-s-guide-to-landscaping-success": "built-to-last-the-ultimate-guide-to-landscaping-in-chicago",
+  "thriving-in-the-windy-city-the-ultimate-guide-to-chicago-landscaping-for-homeowners": "built-to-last-the-ultimate-guide-to-landscaping-in-chicago",
+  "tough-beautiful-a-chicago-homeowner-s-guide-to-year-round-landscaping": "built-to-last-the-ultimate-guide-to-landscaping-in-chicago",
+  "transform-your-yard-expert-landscaping-tips-for-chicago-homeowners": "built-to-last-the-ultimate-guide-to-landscaping-in-chicago",
+  "transform-your-yard-the-ultimate-chicago-landscaping-guide-for-every-season": "built-to-last-the-ultimate-guide-to-landscaping-in-chicago",
+  "your-ultimate-guide-to-chicago-landscaping-creating-a-beautiful-yard-that-lasts": "built-to-last-the-ultimate-guide-to-landscaping-in-chicago",
+  "the-ultimate-chicago-landscaping-guide-thriving-gardens-in-the-windy-city": "built-to-last-the-ultimate-guide-to-landscaping-in-chicago",
+  "effortless-elegance-low-maintenance-landscaping-for-your-chicago-home": "low-maintenance-landscape-ideas-chicago",
+  "7-low-maintenance-landscaping-ideas-for-a-stunning-chicago-yard": "low-maintenance-landscape-ideas-chicago",
+  "built-to-last-low-maintenance-landscaping-for-chicago-s-tough-climate": "low-maintenance-landscape-ideas-chicago",
+  "low-maintenance-landscaping-for-chicago-homes-a-four-season-guide": "low-maintenance-landscape-ideas-chicago",
+  "low-upkeep-landscaping-ideas-for-busy-chicago-homeowners": "low-maintenance-landscape-ideas-chicago",
+  "stylish-low-maintenance-landscaping-ideas-for-modern-chicago-homes": "low-maintenance-landscape-ideas-chicago",
+
+  "chicago-spring-cleanup-guide-essential-tasks-for-a-healthy-green-yard": "the-complete-chicago-spring-cleanup-guide-for-busy-homeowners",
+  "the-essential-chicago-spring-cleanup-plan-for-healthy-landscapes": "the-complete-chicago-spring-cleanup-guide-for-busy-homeowners",
+
+  "unilock-pavers-vs-stamped-concrete-which-survives-chicago-winters-better": "unilock-vs-concrete-chicago",
+  "unilock-vs-concrete-which-surface-holds-up-best-in-busy-chicago-households": "unilock-vs-concrete-chicago",
+
+  "seed-or-sod-how-to-choose-the-right-method-for-chicago-s-climate": "sod-vs-seed-chicago",
+  "seed-vs-sod-on-a-budget-what-chicago-homeowners-should-choose": "sod-vs-seed-chicago",
+
+  "how-to-fix-a-wet-chicago-backyard-expert-tips-for-fast-drainage-improvements": "backyard-drainage-solutions-chicago",
+  "the-backyard-drainage-fix-every-chicago-home-needs-before-spring": "backyard-drainage-solutions-chicago",
+  "the-chicago-drainage-blueprint-how-pros-fix-the-most-common-yard-problems": "backyard-drainage-solutions-chicago",
+
+  "how-chicago-winters-impact-paver-driveways-and-how-to-prevent-damage": "paver-driveway-freeze-thaw-chicago",
+  "how-freeze-thaw-cycles-really-affect-paver-driveways-chicago-edition": "paver-driveway-freeze-thaw-chicago",
+
+  "chicago-yard-erosion-hardscape-fixes-that-stop-soil-loss-permanently": "erosion-control-hardscaping-chicago",
+  "stop-erosion-before-it-starts-hardscape-techniques-used-by-chicago-experts": "erosion-control-hardscaping-chicago",
+  "the-erosion-control-guide-preventing-slope-failure-in-chicago-yards": "erosion-control-hardscaping-chicago",
+
+  "the-best-pavers-for-chicago-pool-decks-heat-proof-slip-proof-stylish": "best-paver-styles-for-chicago-pool-decks-cool-safe-slip-resistant-options",
+
+  "choosing-between-natural-manufactured-pavers-which-fits-chicago-homes-best": "manufactured-vs-natural-stone-a-cost-comparison-for-chicago-projects",
+  "choosing-between-natural-stone-manufactured-pavers-which-fits-chicago-homes-best": "manufactured-vs-natural-stone-a-cost-comparison-for-chicago-projects",
+
+  "chicago-retaining-wall-failures-real-examples-and-how-they-could-ve-been-avoided": "top-causes-of-retaining-wall-failure-in-chicago-and-how-to-prevent-them",
+
+  "chicago-retaining-wall-pricing-breakdown-what-your-contractor-isn-t-telling-you": "retaining-wall-cost-chicago",
+  "how-to-budget-for-a-retaining-wall-in-chicago-without-overpaying": "retaining-wall-cost-chicago",
+
+  "the-pros-cons-of-mulch-blowing-for-chicago-hoas-and-large-properties": "mulch-blowing-vs-traditional-spreading-which-method-is-better-for-large-chicago-properties",
+
+  "is-premium-hardwood-mulch-worth-it-chicago-landscapers-weigh-in": "why-mulch-quality-matters-the-cost-of-using-cheap-mulch-in-chicago",
+
+  "custom-arbor-ideas-that-add-instant-charm-to-chicago-front-yards": "custom-cedar-arbors-chicago",
+  "custom-wood-arbors-that-transform-small-chicago-spaces-into-garden-retreats": "custom-cedar-arbors-chicago",
+
+  "the-hidden-benefits-of-artificial-turf-for-dog-owners-in-urban-chicago": "artificial-turf-for-dogs-chicago",
+  "the-ultimate-chicago-pet-lawn-why-turf-is-taking-over-city-backyards": "artificial-turf-for-dogs-chicago",
+
+  "pondless-waterfalls-the-safest-water-feature-for-families-in-chicago": "why-pondless-waterfalls-are-chicago-s-most-low-maintenance-water-feature",
+
+  "winterizing-a-chicago-koi-pond-expert-steps-to-keep-fish-safe-all-season": "koi-pond-winter-care-chicago",
+
+  "the-most-overlooked-steps-in-a-chicago-patio-build-and-why-they-matter": "what-really-happens-during-a-chicago-patio-installation-step-by-step-breakdown",
+
+  "bluegrass-vs-fescue-why-bluegrass-still-wins-in-chicago-s-climate": "kentucky-bluegrass-sod-installation",
+  "the-science-behind-kentucky-bluegrass-why-it-performs-best-in-illinois": "kentucky-bluegrass-sod-installation",
+
+  "grading-before-sod-installation": "how-proper-grading-protects-your-chicago-home-from-water-damage",
+  "leveling-a-chicago-yard-why-grading-is-the-key-to-drainage-lawn-health": "how-proper-grading-protects-your-chicago-home-from-water-damage",
+
+  "chicago-fall-cleanup-mistakes-that-lead-to-lawn-damage": "fall-leaf-cleanup-in-chicago-why-timing-matters-more-than-you-think",
+
+  "how-boulder-placement-can-change-the-entire-look-of-a-chicago-landscape": "creative-ways-to-use-landscape-boulders-in-chicago-front-back-yards",
+
+  "why-outcropping-stone-is-trending-in-new-chicago-landscape-designs": "how-to-use-stone-outcroppings-to-add-texture-height-to-flat-chicago-yards"
+}

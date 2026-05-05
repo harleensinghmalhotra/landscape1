@@ -79,8 +79,11 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
     <div className="bg-white">
       <Helmet>
         <title>About Marcus Dailey | Chicago Landscaping Expert</title>
-        <meta name="description" content="Meet Marcus Dailey, founder of M. Dailey Landscaping. Over 10 years of experience transforming Chicago residential and commercial properties." />
-        <link rel="canonical" href="https://mdaileylandscaping.com/about" />
+        <meta name="description" content="Meet Marcus Dailey, founder of M. Dailey Landscape & Design. Over 10 years of experience transforming Chicago residential and commercial properties." />
+        <link rel="canonical" href="https://mdaileylandscape.com/about" />
+        <meta property="og:title" content="About Marcus Dailey | Chicago Landscaping Expert" />
+        <meta property="og:description" content="Founder Marcus Dailey on the story behind M. Dailey Landscape & Design — over a decade transforming Chicago yards." />
+        <meta property="og:url" content="https://mdaileylandscape.com/about" />
       </Helmet>
       {/* Hero Section */}
 <section className="relative h-[300px] sm:h-[350px] md:h-[400px] flex items-center">
@@ -147,6 +150,10 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
         <img
           src="/About Us Photo.jpg"
           alt="Marcus M. Dailey on a Chicago landscaping project"
+          loading="lazy"
+          decoding="async"
+          width="1200"
+          height="900"
           className="rounded-2xl shadow-2xl w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover"
         />
       </div>

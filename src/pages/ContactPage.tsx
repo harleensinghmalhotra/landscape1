@@ -98,9 +98,12 @@ export default function ContactPage({ onNavigate }: ContactPageProps) {
   return (
     <div className="bg-white">
       <Helmet>
-        <title>Get a Free Quote | Landscaping & Hardscaping Chicago</title>
-        <meta name="description" content="Request a free consultation for your Chicago landscaping project. Contact M. Dailey Landscaping for hardscapes, pavers, and maintenance quotes." />
-        <link rel="canonical" href="https://mdaileylandscaping.com/contact" />
+        <title>Free Landscaping Quote in Chicago | M. Dailey Landscape & Design</title>
+        <meta name="description" content="Request a free consultation for your Chicago landscaping project. Contact M. Dailey Landscape & Design for hardscapes, pavers, retaining walls and maintenance quotes." />
+        <link rel="canonical" href="https://mdaileylandscape.com/contact" />
+        <meta property="og:title" content="Free Landscaping Quote in Chicago | M. Dailey Landscape & Design" />
+        <meta property="og:description" content="Request a free consultation for your Chicago landscaping project — hardscapes, pavers, retaining walls and more." />
+        <meta property="og:url" content="https://mdaileylandscape.com/contact" />
       </Helmet>
       {/* Hero Section */}
       <section className="relative h-[300px] sm:h-[350px] md:h-[400px] flex items-center bg-black">

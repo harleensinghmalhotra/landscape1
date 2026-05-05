@@ -128,9 +128,12 @@ export default function ServicesPage({ onNavigate }: ServicesPageProps) {
   return (
     <div className="bg-white">
       <Helmet>
-        <title>Our Services | Retaining Walls, Pavers & Landscaping Chicago</title>
-        <meta name="description" content="Expert landscaping services in Chicago: Retaining walls, driveway pavers, sod installation, and seasonal maintenance. Fully insured." />
-        <link rel="canonical" href="https://mdaileylandscaping.com/services" />
+        <title>Landscaping & Hardscape Services in Chicago | M. Dailey Landscape & Design</title>
+        <meta name="description" content="Full-service Chicago landscaping: retaining walls, paver driveways, patios, water features, artificial turf, sod installation and seasonal yard care. Fully insured." />
+        <link rel="canonical" href="https://mdaileylandscape.com/services" />
+        <meta property="og:title" content="Landscaping & Hardscape Services in Chicago | M. Dailey Landscape & Design" />
+        <meta property="og:description" content="Retaining walls, paver driveways, patios, water features, artificial turf and seasonal yard care across Chicagoland." />
+        <meta property="og:url" content="https://mdaileylandscape.com/services" />
       </Helmet>
       {/* Hero Section */}
       <section className="relative h-[300px] sm:h-[350px] md:h-[400px] flex items-center bg-black">
@@ -173,6 +176,8 @@ export default function ServicesPage({ onNavigate }: ServicesPageProps) {
                     <img
                       src={service.image}
                       alt={service.alt}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-[250px] sm:h-[350px] md:h-[450px] lg:h-[500px] object-cover rounded-2xl shadow-2xl"
                     />
                   </div>

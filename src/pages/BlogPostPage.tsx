@@ -16,31 +16,79 @@ interface BlogPost {
   content: string;
 }
 
+const SITE_ORIGIN = 'https://mdaileylandscape.com';
+const STOP_WORDS = new Set([
+  'a','an','the','and','or','but','of','to','in','on','for','with','at','by','from','is','are','was','were','be','been','being','it','this','that','these','those','your','our','my','their','his','her','its','as','if','than','then','so','do','does','did','can','will','should','would','could','have','has','had','i','you','we','they','he','she','what','which','who','how','why','when','where','about','into','out','up','down','over','under','more','most','some','any','no','not'
+]);
+
+function tokenize(s: string): Set<string> {
+  return new Set(
+    s
+      .toLowerCase()
+      .replace(/[^a-z0-9\s]/g, ' ')
+      .split(/\s+/)
+      .filter((t) => t.length > 2 && !STOP_WORDS.has(t))
+  );
+}
+
+function similarity(a: Set<string>, b: Set<string>): number {
+  if (a.size === 0 || b.size === 0) return 0;
+  let inter = 0;
+  for (const t of a) if (b.has(t)) inter++;
+  const union = a.size + b.size - inter;
+  return inter / union;
+}
+
 export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
   const [post, setPost] = useState<BlogPost | null>(null);
   const [allPosts, setAllPosts] = useState<BlogPost[]>([]);
+  const [canonicals, setCanonicals] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(true);
   const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([]);
 
   useEffect(() => {
     const load = async () => {
       try {
-        // 1️⃣ Load the full list (for prev/next + related)
-        const listRes = await fetch("/blogs/blogs.json");
-        const listData = await listRes.json();
+        const [listRes, canonRes, postRes] = await Promise.all([
+          fetch('/blogs/blogs.json'),
+          fetch('/blogs/canonicals.json').catch(() => null),
+          fetch(`/blogs/${slug}.json`),
+        ]);
+
+        const listData: BlogPost[] = await listRes.json();
         setAllPosts(listData);
 
-        // 2️⃣ Load this specific post
-        const postRes = await fetch(`/blogs/${slug}.json`);
-        const postData = await postRes.json();
+        let canonMap: Record<string, string> = {};
+        if (canonRes && canonRes.ok) {
+          const raw = await canonRes.json();
+          canonMap = Object.fromEntries(
+            Object.entries(raw).filter(([k]) => !k.startsWith('_')) as [string, string][]
+          );
+          setCanonicals(canonMap);
+        }
 
+        if (canonMap[slug] && canonMap[slug] !== slug) {
+          onNavigate('blog-post', canonMap[slug]);
+          return;
+        }
+
+        const postData: BlogPost = await postRes.json();
         setPost(postData);
 
-        // 3️⃣ Related posts
-        const related = listData
-          .filter((p: BlogPost) => p.slug !== slug)
-          .slice(0, 3);
-        setRelatedPosts(related);
+        const target = tokenize(`${postData.title} ${postData.intro}`);
+        const scored = listData
+          .filter((p) => p.slug !== slug)
+          .map((p) => ({
+            post: p,
+            score: similarity(target, tokenize(`${p.title} ${p.intro}`)),
+          }))
+          .sort((a, b) => b.score - a.score);
+
+        const top = scored.slice(0, 3).map((s) => s.post);
+        const fallback = top.length < 3
+          ? [...top, ...listData.filter((p) => p.slug !== slug && !top.includes(p)).slice(0, 3 - top.length)]
+          : top;
+        setRelatedPosts(fallback);
       } catch (e) {
         setPost(null);
       }
@@ -48,8 +96,9 @@ export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
       setLoading(false);
     };
 
+    setLoading(true);
     load();
-  }, [slug]);
+  }, [slug, onNavigate]);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -62,9 +111,7 @@ export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
 
   const getPrevNextPosts = () => {
     if (!post || !allPosts.length) return { prev: null, next: null };
-
     const idx = allPosts.findIndex((p) => p.slug === post.slug);
-
     return {
       prev: idx > 0 ? allPosts[idx - 1] : null,
       next: idx < allPosts.length - 1 ? allPosts[idx + 1] : null,
@@ -100,18 +147,33 @@ export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
     );
   }
 
+  const canonicalSlug = canonicals[post.slug] || post.slug;
+  const canonicalUrl = `${SITE_ORIGIN}/blog/${canonicalSlug}`;
+  const isDuplicate = canonicalSlug !== post.slug;
+  const ogImage = `${SITE_ORIGIN}/og-image.jpg`;
+
   return (
     <div className="bg-white">
       <Helmet>
-        <title>{post.title} | M. Dailey Landscaping & Design</title>
+        <title>{post.title} | M. Dailey Landscape & Design</title>
         <meta name="description" content={post.intro} />
-        <link
-          rel="canonical"
-          href={`https://mdaileylandscaping.com/blog/${post.slug}`}
-        />
+        <link rel="canonical" href={canonicalUrl} />
+        {isDuplicate && <meta name="robots" content="noindex, follow" />}
+
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.intro} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:site_name" content="M. Dailey Landscape & Design" />
+        <meta property="article:published_time" content={post.date} />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:description" content={post.intro} />
+        <meta name="twitter:image" content={ogImage} />
       </Helmet>
 
-      {/* SIMPLE TOP BAR – IMAGELESS */}
       <section className="w-full h-[180px] bg-gray-900 flex items-center">
         <div className="container mx-auto px-4">
           <h1 className="text-white text-3xl sm:text-4xl font-bold">{post.title}</h1>
@@ -140,14 +202,12 @@ export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
             </p>
           </header>
 
-          {/* FULL HTML CONTENT */}
           <div
             className="prose prose-lg sm:prose-xl max-w-none my-10"
             style={{ lineHeight: '1.75' }}
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
 
-          {/* PREV / NEXT */}
           <div className="mt-12 sm:mt-16 pt-8 sm:pt-10 border-t border-gray-200">
             <div className="flex flex-col sm:flex-row justify-between gap-4">
 
@@ -186,7 +246,6 @@ export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
         </div>
       </article>
 
-      {/* RELATED POSTS – IMAGELESS */}
       {relatedPosts.length > 0 && (
         <section className="py-12 sm:py-16 bg-gray-50">
           <div className="container mx-auto px-4 max-w-6xl">
@@ -207,17 +266,23 @@ export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
                   </div>
 
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 line-clamp-2">
-                    {p.title}
+                    <a
+                      href={`/blog/${p.slug}`}
+                      onClick={(e) => { e.preventDefault(); onNavigate('blog-post', p.slug); }}
+                      className="hover:text-brand-primary transition-colors"
+                    >
+                      {p.title}
+                    </a>
                   </h3>
 
                   <p className="text-sm sm:text-base text-gray-600 mb-4 line-clamp-3">
                     {p.intro}
                   </p>
 
-                  <button className="inline-flex items-center gap-2 text-brand-primary font-semibold">
+                  <span className="inline-flex items-center gap-2 text-brand-primary font-semibold">
                     Read More
                     <ArrowRight size={16} />
-                  </button>
+                  </span>
                 </article>
               ))}
             </div>
@@ -225,7 +290,6 @@ export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
         </section>
       )}
 
-      {/* CTA */}
       <section className="py-12 sm:py-16 bg-gray-900 text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">

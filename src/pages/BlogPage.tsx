@@ -111,12 +111,18 @@ export default function BlogPage({ onNavigate, page = 1 }: BlogPageProps) {
   return (
     <div className="bg-white">
       <Helmet>
-        <title>Blog | M. Dailey Landscaping & Design</title>
+        <title>Landscaping Blog | M. Dailey Landscape & Design</title>
         <meta
           name="description"
-          content="Expert landscaping tips, design ideas, and maintenance guides for Chicago homeowners."
+          content="Expert landscaping tips, hardscape guides, drainage advice and seasonal maintenance for Chicago homeowners — written by M. Dailey Landscape & Design."
         />
-        <link rel="canonical" href="https://mdaileylandscaping.com/blog" />
+        <link rel="canonical" href="https://mdaileylandscape.com/blog" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Landscaping Blog | M. Dailey Landscape & Design" />
+        <meta property="og:description" content="Expert landscaping tips, hardscape guides and seasonal maintenance for Chicago homeowners." />
+        <meta property="og:url" content="https://mdaileylandscape.com/blog" />
+        <meta property="og:image" content="https://mdaileylandscape.com/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
 
       {/* HERO */}
@@ -153,15 +159,23 @@ export default function BlogPage({ onNavigate, page = 1 }: BlogPageProps) {
                     </div>
 
                     <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 sm:mb-4 hover:text-brand-primary transition-colors">
-                      {post.title}
+                      <a
+                        href={`/blog/${post.slug}`}
+                        onClick={(e) => { e.preventDefault(); handlePostClick(post.slug); }}
+                        className="hover:text-brand-primary transition-colors"
+                      >
+                        {post.title}
+                      </a>
                     </h2>
 
                     <p className="text-base sm:text-lg text-gray-600 mb-4 sm:mb-6 leading-relaxed">
                       {post.intro}
                     </p>
 
-                    <button
+                    <a
+                      href={`/blog/${post.slug}`}
                       onClick={(e) => {
+                        e.preventDefault();
                         e.stopPropagation();
                         handlePostClick(post.slug);
                       }}
@@ -169,7 +183,7 @@ export default function BlogPage({ onNavigate, page = 1 }: BlogPageProps) {
                     >
                       Read More
                       <ArrowRight size={16} />
-                    </button>
+                    </a>
                   </div>
                 </article>
               ))}

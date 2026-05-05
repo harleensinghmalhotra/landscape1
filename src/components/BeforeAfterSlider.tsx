@@ -6,10 +6,12 @@ interface BeforeAfterSliderProps {
   after: string;
   title: string;
   description?: string;
+  alt?: string;
 }
 
-export default function BeforeAfterSlider({ before, after, title, description }: BeforeAfterSliderProps) {
+export default function BeforeAfterSlider({ before, after, title, description, alt }: BeforeAfterSliderProps) {
   const [sliderPosition, setSliderPosition] = useState(50);
+  const altBase = alt || title;
 
   return (
     <div className="bg-white p-4 sm:p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300">
@@ -22,7 +24,9 @@ export default function BeforeAfterSlider({ before, after, title, description }:
         {/* After Image (base layer) */}
         <img
           src={after}
-          alt="After"
+          alt={`After – ${altBase}`}
+          loading="lazy"
+          decoding="async"
           className="absolute inset-0 w-full h-full object-cover"
         />
 
@@ -33,7 +37,9 @@ export default function BeforeAfterSlider({ before, after, title, description }:
         >
           <img
             src={before}
-            alt="Before"
+            alt={`Before – ${altBase}`}
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover"
           />
         </div>

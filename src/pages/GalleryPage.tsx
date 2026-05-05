@@ -99,9 +99,12 @@ export default function GalleryPage({ onNavigate }: GalleryPageProps) {
   return (
     <div className="bg-white">
       <Helmet>
-        <title>Project Gallery | Landscaping & Hardscaping Photos Chicago</title>
-        <meta name="description" content="See our portfolio of residential and commercial landscaping projects in Chicago. Before and after photos of patios, driveways, and gardens." />
-        <link rel="canonical" href="https://mdaileylandscaping.com/gallery" />
+        <title>Chicago Landscaping Project Gallery | Before & After Photos</title>
+        <meta name="description" content="Browse before-and-after photos of Chicago landscaping, paver, retaining wall and hardscape projects completed by M. Dailey Landscape & Design." />
+        <link rel="canonical" href="https://mdaileylandscape.com/gallery" />
+        <meta property="og:title" content="Chicago Landscaping Project Gallery | M. Dailey Landscape & Design" />
+        <meta property="og:description" content="Before-and-after photos of Chicago landscaping, paver, retaining wall and hardscape projects." />
+        <meta property="og:url" content="https://mdaileylandscape.com/gallery" />
       </Helmet>
       {/* Hero Section */}
       <section className="relative h-[300px] sm:h-[350px] md:h-[400px] flex items-center bg-black">
@@ -150,6 +153,8 @@ export default function GalleryPage({ onNavigate }: GalleryPageProps) {
                     <img
                       src={project.after}
                       alt={`Completed ${project.alt}`}
+                      loading="lazy"
+                      decoding="async"
                       className="absolute inset-0 w-full h-full object-cover"
                     />
 
@@ -161,6 +166,8 @@ export default function GalleryPage({ onNavigate }: GalleryPageProps) {
                       <img
                         src={project.before}
                         alt={`Before ${project.alt}`}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover"
                       />
                     </div>

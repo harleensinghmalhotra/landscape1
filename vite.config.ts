@@ -4,7 +4,7 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
-  base: "./", // ✅ Required for Vercel to render correctly
+  base: "/",
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

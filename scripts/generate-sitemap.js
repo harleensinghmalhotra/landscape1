@@ -11,56 +11,59 @@ const distPath = path.join(__dirname, '../dist');
 const baseUrl = "https://mdaileylandscape.com";
 
 const staticPages = [
-    { url: '/', priority: '1.0' },
-    { url: '/services', priority: '0.8' },
-    { url: '/about', priority: '0.8' },
-    { url: '/contact', priority: '0.8' },
-    { url: '/blog', priority: '0.7' }
+  { url: '/', priority: '1.0', changefreq: 'weekly' },
+  { url: '/services', priority: '0.9', changefreq: 'monthly' },
+  { url: '/about', priority: '0.7', changefreq: 'monthly' },
+  { url: '/contact', priority: '0.8', changefreq: 'monthly' },
+  { url: '/gallery', priority: '0.7', changefreq: 'monthly' },
+  { url: '/careers', priority: '0.5', changefreq: 'monthly' },
+  { url: '/blog', priority: '0.8', changefreq: 'weekly' }
 ];
 
 function generateSitemapEntries() {
-    const today = new Date().toISOString().split('T')[0];
-    let entries = '';
+  const today = new Date().toISOString().split('T')[0];
+  const entries = [];
 
-    // Add static pages
-    staticPages.forEach(page => {
-        entries += `  <url>
+  for (const page of staticPages) {
+    entries.push(`  <url>
     <loc>${baseUrl}${page.url}</loc>
     <lastmod>${today}</lastmod>
+    <changefreq>${page.changefreq}</changefreq>
     <priority>${page.priority}</priority>
-  </url>\n`;
-    });
+  </url>`);
+  }
 
-    // Add blog posts
-    if (fs.existsSync(blogsJsonPath)) {
-        const blogs = JSON.parse(fs.readFileSync(blogsJsonPath, 'utf8'));
-        blogs.forEach(blog => {
-            const date = blog.dateModified || blog.datePublished || blog.date || today;
-            entries += `  <url>
+  // blogs.json is already filtered to canonical-only by generate-blogs-index.js
+  if (fs.existsSync(blogsJsonPath)) {
+    const blogs = JSON.parse(fs.readFileSync(blogsJsonPath, 'utf8'));
+    for (const blog of blogs) {
+      const date = (blog.dateModified || blog.datePublished || blog.date || today).split('T')[0];
+      entries.push(`  <url>
     <loc>${baseUrl}/blog/${blog.slug}</loc>
-    <lastmod>${date.split('T')[0]}</lastmod>
-    <priority>0.6</priority>
-  </url>\n`;
-        });
+    <lastmod>${date}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>`);
     }
+  }
 
-    return `<?xml version="1.0" encoding="UTF-8"?>
+  return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${entries}</urlset>`;
+${entries.join('\n')}
+</urlset>
+`;
 }
 
 function run() {
-    const sitemapContent = generateSitemapEntries();
+  const sitemapContent = generateSitemapEntries();
 
-    // Save to public/
-    fs.writeFileSync(path.join(publicPath, 'sitemap.xml'), sitemapContent);
-    console.log('Generated: public/sitemap.xml');
+  fs.writeFileSync(path.join(publicPath, 'sitemap.xml'), sitemapContent);
+  console.log('Generated: public/sitemap.xml');
 
-    // Also save to dist/ if it exists (for current build)
-    if (fs.existsSync(distPath)) {
-        fs.writeFileSync(path.join(distPath, 'sitemap.xml'), sitemapContent);
-        console.log('Generated: dist/sitemap.xml');
-    }
+  if (fs.existsSync(distPath)) {
+    fs.writeFileSync(path.join(distPath, 'sitemap.xml'), sitemapContent);
+    console.log('Generated: dist/sitemap.xml');
+  }
 }
 
 run();

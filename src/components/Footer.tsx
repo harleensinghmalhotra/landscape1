@@ -37,7 +37,11 @@ export default function Footer({ onNavigate }: FooterProps) {
           <div>
             <img
               src="/2AAA.png"
-              alt={info.name || 'MD Landscape & Design'}
+              alt={info.name || 'M. Dailey Landscape & Design — Chicago landscaping and hardscape contractor'}
+              loading="lazy"
+              decoding="async"
+              width="220"
+              height="80"
               className="h-12 sm:h-14 md:h-16 w-auto mb-3 sm:mb-4 object-contain"
             />
             <p className="text-xs sm:text-sm">

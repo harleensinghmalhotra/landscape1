@@ -155,9 +155,13 @@ export default function HomePage({ onNavigate }: HomePageProps) {
   return (
     <div className="bg-white">
       <Helmet>
-        <title>Landscaping Chicago | M. Dailey Landscaping & Design</title>
-        <meta name="description" content="Top-rated Chicago landscaping company specializing in hardscapes, retaining walls, pavers, and garden design. Get a free quote today." />
-        <link rel="canonical" href="https://mdaileylandscaping.com/" />
+        <title>Chicago Landscaping & Hardscape Experts | M. Dailey Landscape & Design</title>
+        <meta name="description" content="Top-rated Chicago landscaping company specializing in hardscapes, retaining walls, paver driveways, water features and full-yard transformations. Get a free quote today." />
+        <link rel="canonical" href="https://mdaileylandscape.com/" />
+        <link rel="preload" as="image" href="/banner2.jpg" />
+        <meta property="og:title" content="Chicago Landscaping & Hardscape Experts | M. Dailey Landscape & Design" />
+        <meta property="og:description" content="Top-rated Chicago landscaping company — hardscapes, retaining walls, paver driveways, water features and full-yard transformations." />
+        <meta property="og:url" content="https://mdaileylandscape.com/" />
       </Helmet>
       {/* Hero Section */}
       <section className="relative h-[450px] sm:h-[550px] md:h-[650px] lg:h-[700px] flex items-center">
@@ -307,6 +311,10 @@ commercial clients throughout the Greater Chicago Area.
         <img
           src="/whychooseus-new.jpg"
           alt="Professional landscaping and hardscaping contractor in Chicago"
+          loading="lazy"
+          decoding="async"
+          width="1200"
+          height="900"
           className="rounded-2xl shadow-2xl w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover"
         />
       </div>

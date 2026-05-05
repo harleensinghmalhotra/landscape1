@@ -1,0 +1,21 @@
+{
+  "name": "M. Dailey Landscape & Design",
+  "short_name": "M. Dailey Landscape",
+  "description": "Chicago's trusted landscape design and installation team — retaining walls, paver driveways, water features and full-yard transformations.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1f4d2c",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -89,7 +89,10 @@ export default function Header({ currentPage, onNavigate }: HeaderProps) {
             >
               <img
                 src="/1AA.png"
-                alt={info.name || 'MD Landscape & Design'}
+                alt={info.name || 'M. Dailey Landscape & Design — Chicago landscaping and hardscape contractor'}
+                width="220"
+                height="60"
+                decoding="async"
                 className={`h-10 sm:h-12 md:h-14 w-auto object-contain transition-all duration-300 ${
                   isScrolled ? 'h-9 sm:h-10 md:h-12' : 'h-10 sm:h-12 md:h-14'
                 }`}
