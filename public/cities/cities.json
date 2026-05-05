@@ -1,0 +1,80 @@
+{
+  "_comment": "City landing pages. Each city becomes /landscaping-<slug>. Edit the intro/highlights to tune tone per neighborhood.",
+  "cities": [
+    {
+      "slug": "chicago",
+      "name": "Chicago",
+      "shortName": "Chicago",
+      "headline": "Chicago Landscaping & Hardscape Experts",
+      "intro": "From Lakeview brownstones to Lincoln Park three-flats, Chicago yards face tight lot lines, clay-heavy soil and brutal freeze-thaw cycles. We design and build paver patios, retaining walls, water features and full-yard transformations engineered for Chicago's climate and code.",
+      "lat": 41.8781,
+      "lng": -87.6298,
+      "neighborhoods": "Lincoln Park, Lakeview, Logan Square, Bucktown, Wicker Park, North Center, Roscoe Village, West Loop and Hyde Park",
+      "highlights": [
+        "City permit experience for retaining walls over 4 ft and shared-lot drainage projects",
+        "Tight-access paver installation for narrow gangways and small Chicago lots",
+        "Heavy-clay soil grading and French-drain solutions for Chicago basements"
+      ]
+    },
+    {
+      "slug": "evanston",
+      "name": "Evanston",
+      "shortName": "Evanston",
+      "headline": "Evanston Landscaping & Hardscape Design",
+      "intro": "Evanston's century-old homes, established trees and proximity to Lake Michigan demand a careful, design-first approach. We blend historic character with modern hardscape — paver driveways, custom cedar arbors, water features and full landscape renovations from CIVIC Center to South Boulevard.",
+      "lat": 42.0451,
+      "lng": -87.6877,
+      "neighborhoods": "downtown Evanston, North Evanston, South Boulevard, Northwestern campus area and the lakefront",
+      "highlights": [
+        "Historic-home-friendly hardscape that respects existing architecture and mature trees",
+        "Lakefront erosion control and bluff restoration",
+        "Custom cedar arbors and trellises designed for Evanston's mature gardens"
+      ]
+    },
+    {
+      "slug": "oak-park",
+      "name": "Oak Park",
+      "shortName": "Oak Park",
+      "headline": "Oak Park Landscaping & Hardscape Specialists",
+      "intro": "Oak Park's Frank Lloyd Wright-era homes deserve landscaping that complements the architecture, not competes with it. We specialize in Prairie-style paver patios, restrained hardscape, modular retaining walls and four-season planting plans across Oak Park and River Forest.",
+      "lat": 41.8850,
+      "lng": -87.7845,
+      "neighborhoods": "Frank Lloyd Wright Historic District, Ridgeland-Oak Park, the Avenue and the Hemingway District",
+      "highlights": [
+        "Prairie-style paver layouts that complement historic architecture",
+        "Mature-tree-friendly excavation and base installation",
+        "Permit handling for Oak Park's stricter setback and grading rules"
+      ]
+    },
+    {
+      "slug": "naperville",
+      "name": "Naperville",
+      "shortName": "Naperville",
+      "headline": "Naperville Landscaping & Outdoor Living",
+      "intro": "Naperville's larger lots and newer construction mean homeowners often want full outdoor-living transformations — paver patios, fire pits, pergolas, pondless waterfalls and pool-deck pavers built to handle DuPage County's freeze-thaw cycles.",
+      "lat": 41.7508,
+      "lng": -88.1535,
+      "neighborhoods": "downtown Naperville, White Eagle, Saybrook, Tall Grass, the Riverwalk corridor and the south Naperville school districts",
+      "highlights": [
+        "Large-lot full-yard design and outdoor-living installation",
+        "Pool-deck paver systems engineered for slip-resistance and heat reflection",
+        "Pondless waterfall and koi-pond installations with year-round filtration"
+      ]
+    },
+    {
+      "slug": "wilmette",
+      "name": "Wilmette",
+      "shortName": "Wilmette",
+      "headline": "Wilmette Landscaping & Hardscape Contractor",
+      "intro": "Wilmette's North Shore estates demand premium materials, precise drainage and four-season planting design. We install Unilock and natural-stone paver driveways, custom retaining walls, koi ponds and full landscape renovations across Wilmette, Kenilworth and Winnetka.",
+      "lat": 42.0723,
+      "lng": -87.7228,
+      "neighborhoods": "East Wilmette, West Wilmette, the lakefront, Kenilworth border and the New Trier school district",
+      "highlights": [
+        "Premium natural-stone and Unilock paver driveways for North Shore homes",
+        "Engineered retaining walls for sloped lakefront properties",
+        "Koi pond and pondless waterfall installation with winterization service"
+      ]
+    }
+  ]
+}

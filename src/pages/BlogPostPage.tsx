@@ -21,6 +21,38 @@ const STOP_WORDS = new Set([
   'a','an','the','and','or','but','of','to','in','on','for','with','at','by','from','is','are','was','were','be','been','being','it','this','that','these','those','your','our','my','their','his','her','its','as','if','than','then','so','do','does','did','can','will','should','would','could','have','has','had','i','you','we','they','he','she','what','which','who','how','why','when','where','about','into','out','up','down','over','under','more','most','some','any','no','not'
 ]);
 
+const LINK_RULES: { pattern: RegExp; href: string }[] = [
+  { pattern: /\bretaining walls?\b/gi, href: '/services' },
+  { pattern: /\bpaver driveways?\b/gi, href: '/services' },
+  { pattern: /\bpaver patios?\b/gi, href: '/services' },
+  { pattern: /\bpaver walkways?\b/gi, href: '/services' },
+  { pattern: /\bartificial turf\b/gi, href: '/services' },
+  { pattern: /\bsod installation\b/gi, href: '/services' },
+  { pattern: /\bwater features?\b/gi, href: '/services' },
+  { pattern: /\bpondless waterfalls?\b/gi, href: '/services' },
+  { pattern: /\bkoi ponds?\b/gi, href: '/services' },
+  { pattern: /\bfree consultation\b/gi, href: '/contact' },
+  { pattern: /\bfree quote\b/gi, href: '/contact' }
+];
+
+function linkifyContent(html: string): string {
+  if (!html) return html;
+  return html.replace(/(<p[^>]*>)([\s\S]*?)(<\/p>)/gi, (_match, open, body, close) => {
+    if (/<a\b/i.test(body)) return open + body + close;
+    let linkedBody = body;
+    let appliedAny = false;
+    for (const rule of LINK_RULES) {
+      if (appliedAny) break;
+      const replaced = linkedBody.replace(rule.pattern, (m: string) => {
+        appliedAny = true;
+        return `<a href="${rule.href}" data-internal="1">${m}</a>`;
+      });
+      linkedBody = replaced;
+    }
+    return open + linkedBody + close;
+  });
+}
+
 function tokenize(s: string): Set<string> {
   return new Set(
     s
@@ -205,7 +237,15 @@ export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
           <div
             className="prose prose-lg sm:prose-xl max-w-none my-10"
             style={{ lineHeight: '1.75' }}
-            dangerouslySetInnerHTML={{ __html: post.content }}
+            dangerouslySetInnerHTML={{ __html: linkifyContent(post.content) }}
+            onClick={(e) => {
+              const target = (e.target as HTMLElement).closest('a[data-internal="1"]') as HTMLAnchorElement | null;
+              if (!target) return;
+              e.preventDefault();
+              const href = target.getAttribute('href');
+              if (href === '/contact') onNavigate('contact');
+              else if (href === '/services') onNavigate('services');
+            }}
           />
 
           <div className="mt-12 sm:mt-16 pt-8 sm:pt-10 border-t border-gray-200">

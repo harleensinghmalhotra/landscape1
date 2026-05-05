@@ -104,6 +104,28 @@ export default function ContactPage({ onNavigate }: ContactPageProps) {
         <meta property="og:title" content="Free Landscaping Quote in Chicago | M. Dailey Landscape & Design" />
         <meta property="og:description" content="Request a free consultation for your Chicago landscaping project — hardscapes, pavers, retaining walls and more." />
         <meta property="og:url" content="https://mdaileylandscape.com/contact" />
+        <script type="application/ld+json">{JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'ContactPage',
+          name: 'Contact M. Dailey Landscape & Design',
+          url: 'https://mdaileylandscape.com/contact',
+          mainEntity: {
+            '@type': 'LocalBusiness',
+            name: 'M. Dailey Landscape & Design',
+            telephone: '+1-773-562-1366',
+            email: 'marcus@mdaileylandscape.com',
+            url: 'https://mdaileylandscape.com',
+            address: { '@type': 'PostalAddress', addressLocality: 'Chicago', addressRegion: 'IL', addressCountry: 'US' }
+          }
+        })}</script>
+        <script type="application/ld+json">{JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mdaileylandscape.com/' },
+            { '@type': 'ListItem', position: 2, name: 'Contact', item: 'https://mdaileylandscape.com/contact' }
+          ]
+        })}</script>
       </Helmet>
       {/* Hero Section */}
       <section className="relative h-[300px] sm:h-[350px] md:h-[400px] flex items-center bg-black">
@@ -336,6 +358,32 @@ export default function ContactPage({ onNavigate }: ContactPageProps) {
               </div>
             </div>
 
+          </div>
+        </div>
+      </section>
+
+      {/* Service Area Map */}
+      <section className="pb-12 sm:pb-16 md:pb-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 sm:mb-4">
+              Our Chicagoland Service Area
+            </h2>
+            <p className="text-base sm:text-lg text-gray-600 mb-6">
+              We serve Chicago and the surrounding suburbs — from Evanston and Wilmette north, to Oak Park and Naperville west, and across the entire North Shore.
+            </p>
+            <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-200">
+              <iframe
+                title="M. Dailey Landscape service area in Chicago"
+                src="https://www.google.com/maps?q=Chicago,IL&z=10&output=embed"
+                width="100%"
+                height="450"
+                style={{ border: 0 }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+            </div>
           </div>
         </div>
       </section>

@@ -2,8 +2,18 @@ import { useEffect, useState } from 'react';
 import { Phone, Mail, MapPin } from 'lucide-react';
 
 interface FooterProps {
-  onNavigate: (page: string) => void;
+  onNavigate: (page: string, params?: string) => void;
 }
+
+const CITY_LINKS: { name: string; slug: string }[] = [
+  { name: 'Chicago', slug: 'chicago' },
+  { name: 'Evanston', slug: 'evanston' },
+  { name: 'Oak Park', slug: 'oak-park' },
+  { name: 'Naperville', slug: 'naperville' },
+  { name: 'Wilmette', slug: 'wilmette' }
+];
+
+const NON_CITY_AREAS = ['Glen Ellyn', 'Glenview', 'Northbrook', 'Oakbrook', 'Arlington Heights', 'Des Plaines', 'Orland Park'];
 
 export default function Footer({ onNavigate }: FooterProps) {
   const currentYear = new Date().getFullYear();
@@ -160,7 +170,20 @@ export default function Footer({ onNavigate }: FooterProps) {
         {/* Service Areas */}
         <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-gray-800">
           <p className="text-xs sm:text-sm text-center">
-            <span className="font-semibold text-white">Service Areas:</span> Chicago • Evanston • Glen Ellyn • Oak Park • Glenview • Northbrook • Oakbrook • Arlington Heights • Des Plaines • Orland Park
+            <span className="font-semibold text-white">Service Areas:</span>{' '}
+            {CITY_LINKS.map((c, i) => (
+              <span key={c.slug}>
+                <a
+                  href={`/landscaping-${c.slug}`}
+                  onClick={(e) => { e.preventDefault(); onNavigate('city', c.slug); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                  className="hover:text-brand-primary transition-colors"
+                >
+                  {c.name}
+                </a>
+                {(i < CITY_LINKS.length - 1 || NON_CITY_AREAS.length > 0) ? ' • ' : ''}
+              </span>
+            ))}
+            {NON_CITY_AREAS.join(' • ')}
           </p>
         </div>
 

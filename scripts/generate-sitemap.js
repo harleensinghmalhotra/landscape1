@@ -6,6 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const blogsJsonPath = path.join(__dirname, '../public/blogs/blogs.json');
+const citiesJsonPath = path.join(__dirname, '../public/cities/cities.json');
 const publicPath = path.join(__dirname, '../public');
 const distPath = path.join(__dirname, '../dist');
 const baseUrl = "https://mdaileylandscape.com";
@@ -31,6 +32,20 @@ function generateSitemapEntries() {
     <changefreq>${page.changefreq}</changefreq>
     <priority>${page.priority}</priority>
   </url>`);
+  }
+
+  // City landing pages
+  if (fs.existsSync(citiesJsonPath)) {
+    const cityData = JSON.parse(fs.readFileSync(citiesJsonPath, 'utf8'));
+    const cities = cityData.cities || [];
+    for (const city of cities) {
+      entries.push(`  <url>
+    <loc>${baseUrl}/landscaping-${city.slug}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>`);
+    }
   }
 
   // blogs.json is already filtered to canonical-only by generate-blogs-index.js

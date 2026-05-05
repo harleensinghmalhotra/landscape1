@@ -33,6 +33,37 @@ function stripHtml(str) {
   return String(str).replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
 }
 
+const LINK_RULES = [
+  { pattern: /\bretaining walls?\b/gi, href: '/services' },
+  { pattern: /\bpaver driveways?\b/gi, href: '/services' },
+  { pattern: /\bpaver patios?\b/gi, href: '/services' },
+  { pattern: /\bpaver walkways?\b/gi, href: '/services' },
+  { pattern: /\bartificial turf\b/gi, href: '/services' },
+  { pattern: /\bsod installation\b/gi, href: '/services' },
+  { pattern: /\bwater features?\b/gi, href: '/services' },
+  { pattern: /\bpondless waterfalls?\b/gi, href: '/services' },
+  { pattern: /\bkoi ponds?\b/gi, href: '/services' },
+  { pattern: /\bfree consultation\b/gi, href: '/contact' },
+  { pattern: /\bfree quote\b/gi, href: '/contact' }
+];
+
+function linkifyContent(html) {
+  if (!html) return html;
+  return html.replace(/(<p[^>]*>)([\s\S]*?)(<\/p>)/gi, (_match, open, body, close) => {
+    if (/<a\b/i.test(body)) return open + body + close;
+    let linkedBody = body;
+    let applied = false;
+    for (const rule of LINK_RULES) {
+      if (applied) break;
+      linkedBody = linkedBody.replace(rule.pattern, (m) => {
+        applied = true;
+        return `<a href="${rule.href}">${m}</a>`;
+      });
+    }
+    return open + linkedBody + close;
+  });
+}
+
 function extractFaqs(html) {
   if (!html) return [];
   const faqs = [];
@@ -96,8 +127,9 @@ async function run() {
     const canonicalUrl = `${baseUrl}/blog/${canonicalSlug}`;
     const isDuplicate = canonicalSlug !== detailSlug;
 
-    const articleBodyText = stripHtml(content);
-    const faqs = extractFaqs(content);
+    const linkedContent = linkifyContent(content);
+    const articleBodyText = stripHtml(linkedContent);
+    const faqs = extractFaqs(linkedContent);
 
     let newHtml = baseHtml;
 
@@ -157,7 +189,13 @@ async function run() {
       "description": description,
       "image": image,
       "articleBody": articleBodyText,
-      "author": { "@type": "Organization", "name": publisherName, "url": baseUrl },
+      "author": {
+        "@type": "Person",
+        "name": "Marcus M. Dailey",
+        "jobTitle": "Founder & Lead Landscape Designer",
+        "worksFor": { "@type": "Organization", "name": publisherName, "url": baseUrl },
+        "url": `${baseUrl}/about`
+      },
       "publisher": {
         "@type": "Organization",
         "name": publisherName,
@@ -205,7 +243,7 @@ async function run() {
       <article>
         <h1>${escapeHtml(title)}</h1>
         ${blogDetail.intro ? `<p><em>${escapeHtml(blogDetail.intro)}</em></p>` : ''}
-        ${content}
+        ${linkedContent}
       </article>
     `;
 

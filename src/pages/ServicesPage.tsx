@@ -125,6 +125,39 @@ export default function ServicesPage({ onNavigate }: ServicesPageProps) {
     }
   ];
 
+  const itemListSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Landscaping & Hardscape Services',
+    itemListElement: services.map((s, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': 'Service',
+        name: s.title,
+        description: s.description,
+        image: `https://mdaileylandscape.com${s.image}`,
+        provider: {
+          '@type': 'LocalBusiness',
+          name: 'M. Dailey Landscape & Design',
+          telephone: '+1-773-562-1366',
+          url: 'https://mdaileylandscape.com'
+        },
+        areaServed: { '@type': 'AdministrativeArea', name: 'Chicagoland, IL' },
+        serviceType: s.title
+      }
+    }))
+  };
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mdaileylandscape.com/' },
+      { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://mdaileylandscape.com/services' }
+    ]
+  };
+
   return (
     <div className="bg-white">
       <Helmet>
@@ -134,6 +167,8 @@ export default function ServicesPage({ onNavigate }: ServicesPageProps) {
         <meta property="og:title" content="Landscaping & Hardscape Services in Chicago | M. Dailey Landscape & Design" />
         <meta property="og:description" content="Retaining walls, paver driveways, patios, water features, artificial turf and seasonal yard care across Chicagoland." />
         <meta property="og:url" content="https://mdaileylandscape.com/services" />
+        <script type="application/ld+json">{JSON.stringify(itemListSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>
       {/* Hero Section */}
       <section className="relative h-[300px] sm:h-[350px] md:h-[400px] flex items-center bg-black">
