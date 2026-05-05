@@ -150,7 +150,8 @@ export default function Footer({ onNavigate }: FooterProps) {
 
             <div className="mt-3 sm:mt-4">
               <p className="text-xs sm:text-sm font-semibold text-white mb-1">Business Hours:</p>
-              <p className="text-[10px] sm:text-xs">Mon - Sat: By Appointment</p>
+              <p className="text-[10px] sm:text-xs">Mon - Fri: 7:30 AM – 6:00 PM</p>
+              <p className="text-[10px] sm:text-xs">Sat - Sun: Closed</p>
               <p className="text-[10px] sm:text-xs">Emergency Service Available</p>
             </div>
           </div>
