@@ -14,6 +14,17 @@ interface BlogPost {
   date: string;
   intro: string;
   content: string;
+  // Tolerate the alternate schema some posts use
+  description?: string;
+  datePublished?: string;
+}
+
+function normalizePost(p: any): BlogPost {
+  return {
+    ...p,
+    intro: p.intro || p.description || '',
+    date: p.date || p.datePublished || '',
+  };
 }
 
 const SITE_ORIGIN = 'https://mdaileylandscape.com';
@@ -87,7 +98,8 @@ export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
           fetch(`/blogs/${slug}.json`),
         ]);
 
-        const listData: BlogPost[] = await listRes.json();
+        const rawList = await listRes.json();
+        const listData: BlogPost[] = rawList.map(normalizePost);
         setAllPosts(listData);
 
         let canonMap: Record<string, string> = {};
@@ -104,7 +116,8 @@ export default function BlogPostPage({ onNavigate, slug }: BlogPostPageProps) {
           return;
         }
 
-        const postData: BlogPost = await postRes.json();
+        const rawPost = await postRes.json();
+        const postData: BlogPost = normalizePost(rawPost);
         setPost(postData);
 
         const target = tokenize(`${postData.title} ${postData.intro}`);
