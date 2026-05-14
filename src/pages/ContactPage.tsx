@@ -22,6 +22,7 @@ export default function ContactPage({ onNavigate }: ContactPageProps) {
     name: '',
     email: '',
     phone: '',
+    zip: '',
     service: '',
     message: ''
   });
@@ -58,6 +59,11 @@ export default function ContactPage({ onNavigate }: ContactPageProps) {
       newErrors.email = 'Please enter a valid email';
     }
     if (!formData.phone.trim()) newErrors.phone = 'Phone number is required';
+    if (!formData.zip.trim()) {
+      newErrors.zip = 'ZIP code is required';
+    } else if (!/^\d{5}(-\d{4})?$/.test(formData.zip.trim())) {
+      newErrors.zip = 'Please enter a valid US ZIP code';
+    }
     if (!formData.service) newErrors.service = 'Please select a service';
     if (!formData.message.trim()) newErrors.message = 'Message is required';
     setErrors(newErrors);
@@ -79,7 +85,7 @@ export default function ContactPage({ onNavigate }: ContactPageProps) {
 });
 
       setIsSubmitted(true);
-      setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+      setFormData({ name: '', email: '', phone: '', zip: '', service: '', message: '' });
       setTimeout(() => setIsSubmitted(false), 5000);
     } catch (error) {
       console.error("Webhook submission failed:", error);
@@ -301,6 +307,28 @@ export default function ContactPage({ onNavigate }: ContactPageProps) {
                       />
                       {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
                     </div>
+                  </div>
+
+                  {/* ZIP */}
+                  <div>
+                    <label htmlFor="zip" className="block text-gray-700 font-semibold mb-2 text-sm sm:text-base">
+                      ZIP Code *
+                    </label>
+                    <input
+                      type="text"
+                      id="zip"
+                      name="zip"
+                      value={formData.zip}
+                      onChange={handleChange}
+                      inputMode="numeric"
+                      maxLength={10}
+                      autoComplete="postal-code"
+                      placeholder="e.g. 60601"
+                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary ${
+                        errors.zip ? 'border-red-500' : 'border-gray-300'
+                      }`}
+                    />
+                    {errors.zip && <p className="text-red-500 text-sm mt-1">{errors.zip}</p>}
                   </div>
 
                   {/* SERVICE */}
