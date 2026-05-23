@@ -20,9 +20,9 @@ export default function GalleryPage({ onNavigate }: GalleryPageProps) {
     {
       before: '/After 2.jpg',
       after: '/Before 2.png',
-      title: 'Front Yard Curb Appeal Renovation',
-      description: 'Total front yard makeover including a new modular retaining wall, fresh sod installation, and a decorative paver walkway with landscape lighting.',
-      alt: 'Front yard landscaping makeover with retaining wall and sod'
+      title: 'Front Yard Stone Garden',
+      description: 'Total front yard makeover including a new modular retaining wall, outdoor plants, and a decorative paver walkway with landscape stone slabs.',
+      alt: 'Front yard stone garden with retaining wall and paver walkway'
     },
     {
       before: '/After 3.jpg',
@@ -55,9 +55,9 @@ export default function GalleryPage({ onNavigate }: GalleryPageProps) {
     {
       before: '/After 7.jpg',
       after: '/Before 7.jpg',
-      title: 'Sod Installation & Retaining Wall',
-      description: 'Corrected an uneven yard with professional grading, a decorative block retaining wall, and fresh Kentucky Bluegrass sod.',
-      alt: 'Grading and sod installation with retaining wall'
+      title: 'Stone Pavement & Garden',
+      description: 'Corrected an uneven yard with professional stone paving, mulch garden, and outdoor pet area.',
+      alt: 'Stone pavement and garden with mulch and outdoor pet area'
     },
     {
       before: '/After 8.jpg',

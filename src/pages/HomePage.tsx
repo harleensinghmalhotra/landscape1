@@ -61,9 +61,9 @@ export default function HomePage({ onNavigate }: HomePageProps) {
     {
       before: '/After 2.jpg',
       after: '/Before 2.png',
-      title: 'Front Yard Curb Appeal Renovation',
-      description: 'Total front yard makeover including a new modular retaining wall, fresh sod installation, and a decorative paver walkway with landscape lighting.',
-      alt: 'Front yard landscaping makeover with retaining wall and sod'
+      title: 'Front Yard Stone Garden',
+      description: 'Total front yard makeover including a new modular retaining wall, outdoor plants, and a decorative paver walkway with landscape stone slabs.',
+      alt: 'Front yard stone garden with retaining wall and paver walkway'
     },
     {
       before: '/After 3.jpg',
