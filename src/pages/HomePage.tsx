@@ -66,11 +66,11 @@ export default function HomePage({ onNavigate }: HomePageProps) {
       alt: 'Front yard stone garden with retaining wall and paver walkway'
     },
     {
-      before: '/After 3.jpg',
-      after: '/Before 3.jpg',
-      title: 'Herringbone Paver Driveway Replacement',
-      description: 'Replaced a collapsed asphalt driveway with a reinforced base and premium brick pavers laid in a classic herringbone pattern.',
-      alt: 'Brick paver driveway installation herringbone pattern'
+      before: '/lshape-before.jpg',
+      after: '/lshape-after.jpg',
+      title: 'L-Shape Paver Patio Installation',
+      description: 'Transformed the backyard into a functional L-shaped paver patio alongside the garage. Full excavation and premium paver installation create a clean, durable hardscape that maximizes usable outdoor space and delivers lasting curb appeal.',
+      alt: 'L-shaped paver patio installation alongside garage'
     },
     {
       before: '/After 4.jpg',

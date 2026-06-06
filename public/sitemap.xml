@@ -2,75 +2,159 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://mdaileylandscape.com/</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://mdaileylandscape.com/services</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://mdaileylandscape.com/about</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://mdaileylandscape.com/contact</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mdaileylandscape.com/gallery</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://mdaileylandscape.com/careers</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://mdaileylandscape.com/blog</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mdaileylandscape.com/landscaping-chicago</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://mdaileylandscape.com/landscaping-evanston</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://mdaileylandscape.com/landscaping-oak-park</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://mdaileylandscape.com/landscaping-naperville</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://mdaileylandscape.com/landscaping-wilmette</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://mdaileylandscape.com/blog/how-much-should-a-retaining-wall-really-cost-in-chicago-a-homeowner-s-breakdown</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mdaileylandscape.com/blog/pool-deck-pavers-that-stay-cool-in-chicago-summers</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mdaileylandscape.com/blog/fall-leaf-removal-rules-chicago-homeowners-need-to-know</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mdaileylandscape.com/blog/fountain-maintenance-for-chicago-homes-what-to-do-each-season</loc>
+    <lastmod>2026-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mdaileylandscape.com/blog/natural-stone-outcroppings-the-easiest-way-to-add-drama-to-flat-yards</loc>
+    <lastmod>2026-05-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mdaileylandscape.com/blog/easy-landscaping-ideas-for-chicago-homeowners-with-no-time-to-maintain</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mdaileylandscape.com/blog/mulch-blowing-vs-hand-spreading-which-is-worth-the-cost-in-chicago</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mdaileylandscape.com/blog/chicago-grading-problems-signs-your-yard-needs-immediate-leveling</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mdaileylandscape.com/blog/climbing-plants-that-survive-chicago-winters-on-your-garden-trellis</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mdaileylandscape.com/blog/outdoor-living-upgrades-that-add-the-most-roi-in-chicago</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mdaileylandscape.com/blog/why-diy-retaining-walls-fail-in-illinois-and-how-pros-avoid-it</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mdaileylandscape.com/blog/artificial-turf-drainage-systems-how-they-really-work-in-heavy-chicago-rain</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mdaileylandscape.com/blog/modern-paver-walkway-designs-popular-in-chicago-suburbs</loc>
+    <lastmod>2026-05-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mdaileylandscape.com/blog/perennial-plants-that-bloom-the-longest-in-illinois-gardens</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://mdaileylandscape.com/blog/using-large-boulders-to-create-focal-points-in-chicago-landscapes</loc>

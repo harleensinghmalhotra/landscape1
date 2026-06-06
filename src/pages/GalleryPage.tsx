@@ -25,11 +25,25 @@ export default function GalleryPage({ onNavigate }: GalleryPageProps) {
       alt: 'Front yard stone garden with retaining wall and paver walkway'
     },
     {
-      before: '/After 3.jpg',
-      after: '/Before 3.jpg',
-      title: 'Herringbone Paver Driveway Replacement',
-      description: 'Replaced a collapsed asphalt driveway with a reinforced base and premium brick pavers laid in a classic herringbone pattern.',
-      alt: 'Brick paver driveway installation herringbone pattern'
+      before: '/lshape-before.jpg',
+      after: '/lshape-after.jpg',
+      title: 'L-Shape Paver Patio Installation',
+      description: 'Transformed the backyard into a functional L-shaped paver patio alongside the garage. Full excavation and premium paver installation create a clean, durable hardscape that maximizes usable outdoor space and delivers lasting curb appeal.',
+      alt: 'L-shaped paver patio installation alongside garage'
+    },
+    {
+      before: '/petfriendly-before.jpg',
+      after: '/petfriendly-after.jpg',
+      title: 'Pet-Friendly Side Yard Artificial Turf & Enclosure',
+      description: 'Converted dirt side yard into a dedicated pet-friendly space. Installed synthetic artificial turf throughout, including site preparation and drainage-optimized infill. Finished with a black decorative iron enclosure and gated entry — creating a clean, low-maintenance pet run that is functional year-round.',
+      alt: 'Pet-friendly side yard with artificial turf and iron enclosure'
+    },
+    {
+      before: '/outdoorkitchen-before.jpg',
+      after: '/outdoorkitchen-after.jpg',
+      title: 'RTA Outdoor Kitchen Installation',
+      description: 'Full assembly and installation of a premium RTA Outdoor Living kitchen on an existing paver patio. The finished build features a Nitro grill, refrigerator, drawer units, and an access door components — delivered turnkey and ready for entertaining.',
+      alt: 'RTA outdoor kitchen with Nitro grill and refrigerator on paver patio'
     },
     {
       before: '/After 4.jpg',
@@ -74,25 +88,11 @@ export default function GalleryPage({ onNavigate }: GalleryPageProps) {
       alt: 'New construction landscaping Chicago'
     },
     {
-      before: '/After 10.jpg',
-      after: '/Before 10.jpg',
-      title: 'Privacy Screen & Yard Renovation',
-      description: 'Installed a decorative retaining wall and a row of evergreen Arborvitae trees to create a lush, natural privacy screen.',
-      alt: 'Backyard privacy screen with Arborvitae trees'
-    },
-    {
       before: '/After 11.jpg',
       after: '/Before 11.jpg',
       title: 'Deck Restoration & Power Washing',
       description: 'Restored a weathered wood deck to like-new condition with professional power washing and premium staining.',
       alt: 'Wood deck power washing and staining'
-    },
-    {
-      before: '/After 12.jpg',
-      after: '/Before 12.jpg',
-      title: 'Paver Parking Pad Installation',
-      description: 'Converted an old rear parking spot into a multi-functional paver pad and walkway, increasing usable outdoor space.',
-      alt: 'Backyard paver parking pad installation'
     }
   ];
 
