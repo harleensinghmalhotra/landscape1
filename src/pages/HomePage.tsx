@@ -66,8 +66,8 @@ export default function HomePage({ onNavigate }: HomePageProps) {
       alt: 'Front yard stone garden with retaining wall and paver walkway'
     },
     {
-      before: '/lshape-before.jpg',
-      after: '/lshape-after.jpg',
+      before: '/lshape-after.jpg',
+      after: '/lshape-before.jpg',
       title: 'L-Shape Paver Patio Installation',
       description: 'Transformed the backyard into a functional L-shaped paver patio alongside the garage. Full excavation and premium paver installation create a clean, durable hardscape that maximizes usable outdoor space and delivers lasting curb appeal.',
       alt: 'L-shaped paver patio installation alongside garage'

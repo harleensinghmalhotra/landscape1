@@ -25,22 +25,22 @@ export default function GalleryPage({ onNavigate }: GalleryPageProps) {
       alt: 'Front yard stone garden with retaining wall and paver walkway'
     },
     {
-      before: '/lshape-before.jpg',
-      after: '/lshape-after.jpg',
+      before: '/lshape-after.jpg',
+      after: '/lshape-before.jpg',
       title: 'L-Shape Paver Patio Installation',
       description: 'Transformed the backyard into a functional L-shaped paver patio alongside the garage. Full excavation and premium paver installation create a clean, durable hardscape that maximizes usable outdoor space and delivers lasting curb appeal.',
       alt: 'L-shaped paver patio installation alongside garage'
     },
     {
-      before: '/petfriendly-before.jpg',
-      after: '/petfriendly-after.jpg',
+      before: '/petfriendly-after.jpg',
+      after: '/petfriendly-before.jpg',
       title: 'Pet-Friendly Side Yard Artificial Turf & Enclosure',
       description: 'Converted dirt side yard into a dedicated pet-friendly space. Installed synthetic artificial turf throughout, including site preparation and drainage-optimized infill. Finished with a black decorative iron enclosure and gated entry — creating a clean, low-maintenance pet run that is functional year-round.',
       alt: 'Pet-friendly side yard with artificial turf and iron enclosure'
     },
     {
-      before: '/outdoorkitchen-before.jpg',
-      after: '/outdoorkitchen-after.jpg',
+      before: '/outdoorkitchen-after.jpg',
+      after: '/outdoorkitchen-before.jpg',
       title: 'RTA Outdoor Kitchen Installation',
       description: 'Full assembly and installation of a premium RTA Outdoor Living kitchen on an existing paver patio. The finished build features a Nitro grill, refrigerator, drawer units, and an access door components — delivered turnkey and ready for entertaining.',
       alt: 'RTA outdoor kitchen with Nitro grill and refrigerator on paver patio'
