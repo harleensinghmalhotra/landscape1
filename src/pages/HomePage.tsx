@@ -177,7 +177,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         {/* Spring booking banner */}
         <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20">
         <div className="bg-brand-primary text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-full shadow-xl text-xs sm:text-sm md:text-base font-bold tracking-wide flex items-center gap-2">
-         🌱 Spring 2026 Booking Now Open
+         🌱 Summer 2026 Bookings Now Open
          </div>
          </div>
         <div className="container mx-auto px-4 relative z-10">
