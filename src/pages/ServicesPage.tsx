@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import { Leaf, Mountain, Droplets, Fence, Flower2, Shovel, CheckCircle, ArrowRight, Square, Home, Sparkles } from 'lucide-react';
+import { Leaf, Mountain, Droplets, Fence, Flower2, Shovel, CheckCircle, ArrowRight, Square, Home, Sparkles, Waves } from 'lucide-react';
 
 interface ServicesPageProps {
   onNavigate: (page: string) => void;
@@ -122,6 +122,23 @@ export default function ServicesPage({ onNavigate }: ServicesPageProps) {
         'Clean borders and uniform coverage'
       ],
       process: ['Bed preparation and cleanup', 'Mulch delivery and spreading', 'Final edging and inspection']
+    },
+    {
+      icon: Waves,
+      title: 'Drainage Solutions & Water Management',
+      image: '/Surface-French-Drain.jpg',
+      alt: 'Yard grading and drainage water management project in Chicago',
+      description: "Chicago's heavy rainfall and clay-dense soils create serious drainage challenges — we design custom French drains, grading, and water management systems that protect your foundation, lawn, and hardscape investment.",
+      benefits: [
+        'French drain installation',
+        'Channel and trench drains for driveways and patios',
+        'Dry creek bed design and installation',
+        'Grading and resloping for proper water runoff',
+        'Downspout extensions and underground discharge lines',
+        'Permeable paver systems',
+        'Catch basin installation'
+      ],
+      process: ['Property grading and soil assessment', 'Custom drainage system design', 'Professional installation and testing']
     }
   ];
 
@@ -162,10 +179,10 @@ export default function ServicesPage({ onNavigate }: ServicesPageProps) {
     <div className="bg-white">
       <Helmet>
         <title>Landscaping & Hardscape Services in Chicago | M. Dailey Landscape & Design</title>
-        <meta name="description" content="Full-service Chicago landscaping: retaining walls, paver driveways, patios, water features, artificial turf, sod installation and seasonal yard care. Fully insured." />
+        <meta name="description" content="Expert drainage solutions & French drain installation in Chicago, plus retaining walls, paver patios, water features and outdoor transformations." />
         <link rel="canonical" href="https://mdaileylandscape.com/services" />
         <meta property="og:title" content="Landscaping & Hardscape Services in Chicago | M. Dailey Landscape & Design" />
-        <meta property="og:description" content="Retaining walls, paver driveways, patios, water features, artificial turf and seasonal yard care across Chicagoland." />
+        <meta property="og:description" content="Custom French drains, dry creek beds, grading and drainage systems, plus retaining walls, paver patios and water features across Chicago and the North Shore." />
         <meta property="og:url" content="https://mdaileylandscape.com/services" />
         <script type="application/ld+json">{JSON.stringify(itemListSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
